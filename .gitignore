@@ -1,0 +1,12 @@
+# OS and editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+
+# Logs
+*.log
+
+# Dependencies / build output (not used, kept for safety)
+node_modules/
+dist/
