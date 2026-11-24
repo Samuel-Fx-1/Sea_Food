@@ -1,4 +1,5 @@
 @import './tokens.css';
+@import './design-system.css';
 @import './shared.css';
 @import './header.css';
 @import './hero.css';
@@ -9,5 +10,9 @@
 @import './visit.css';
 @import './reservations.css';
 @import './footer.css';
+@import './components.css';
+@import './pages.css';
 @import './motion.css';
+@import './theme.css';
 @import './responsive.css';
+@import './responsive-plus.css';
