@@ -37,7 +37,7 @@ export function DishCard({ dish }: DishCardProps) {
         <p>{dish.description}</p>
         <div className="dish-card__footer">
           <span className="dish-card__serves">{dish.serves}</span>
-          <Price value={dish.price} placeholder={dish.priceIsPlaceholder} />
+          <Price value={dish.price} />
         </div>
       </div>
     </article>
