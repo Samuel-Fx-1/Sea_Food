@@ -16,6 +16,7 @@ const schema = z.object({
     .trim()
     .min(10, 'Please tell us a little more (at least 10 characters).')
     .max(1000, 'Please keep your message under 1000 characters.'),
+  _gotcha: z.string().max(200).optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -23,6 +24,7 @@ type FormValues = z.infer<typeof schema>;
 export function ContactForm() {
   const [submitError, setSubmitError] = useState('');
   const [sent, setSent] = useState(false);
+  const emailConfigured = Boolean(import.meta.env.VITE_FORMSPREE_ENDPOINT);
 
   const {
     register,
@@ -31,17 +33,24 @@ export function ContactForm() {
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { name: '', email: '', subject: '', message: '' },
+    defaultValues: { name: '', email: '', subject: '', message: '', _gotcha: '' },
   });
 
   const onSubmit = async (values: FormValues): Promise<void> => {
     setSubmitError('');
     setSent(false);
 
+    // Honeypot: bots get a quiet success with no email sent.
+    if (values._gotcha) {
+      setSent(true);
+      return;
+    }
+
     try {
-      await sendEmail(import.meta.env.VITE_FORMSPREE_CONTACT_ENDPOINT, {
+      await sendEmail(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
         _subject: values.subject || `Website message from ${values.name}`,
         _replyto: values.email,
+        _gotcha: values._gotcha ?? '',
         Name: values.name,
         Email: values.email,
         Subject: values.subject || 'Website message',
@@ -58,6 +67,12 @@ export function ContactForm() {
 
   return (
     <form className="booking-form" onSubmit={handleSubmit(onSubmit)} noValidate>
+      <div className="sr-only" aria-hidden="true">
+        <label>
+          Leave this field empty
+          <input type="text" tabIndex={-1} autoComplete="off" {...register('_gotcha')} />
+        </label>
+      </div>
       <div className="form-grid">
         <label className="form-field">
           <span>Name</span>
@@ -81,6 +96,12 @@ export function ContactForm() {
         </label>
       </div>
 
+      {import.meta.env.DEV && !emailConfigured ? (
+        <p className="booking-form__disclaimer" role="status">
+          Demo mode: <code>VITE_FORMSPREE_ENDPOINT</code> is not set, so your message will not be
+          emailed. Add it to <code>.env</code> and restart the dev server to enable delivery.
+        </p>
+      ) : null}
       {submitError ? <p className="form-error" role="alert">{submitError}</p> : null}
       {sent ? (
         <p className="form-success" role="status">
