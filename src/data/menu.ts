@@ -126,8 +126,7 @@ export const menuContent: MenuContent = {
           image: '/images/seafood/seafood-platter.png',
           imageAlt:
             'Mixed seafood platter with prawns, oysters, raw fish, lobster tails, crab and mussels with lemon and parsley',
-          price: 0, // TODO: set real price
-          priceIsPlaceholder: true,
+          price: 148, // DEMO: matches the main dish catalogue
         },
         {
           id: 'grilled-seafood-platter',
@@ -149,8 +148,7 @@ export const menuContent: MenuContent = {
           image: '/images/seafood/grilled-seafood-platter.png',
           imageAlt:
             'Grilled crabs, shrimp and baked scallops served with baby potatoes and sweet corn',
-          price: 0, // TODO: set real price
-          priceIsPlaceholder: true,
+          price: 112, // DEMO: matches the main dish catalogue
         },
       ],
     },
@@ -180,8 +178,7 @@ export const menuContent: MenuContent = {
           image: '/images/seafood/cajun-seafood-boil.png',
           imageAlt:
             'Cajun seafood boil with lobster tails, shrimp, mussels, corn, lemon and fresh bread',
-          price: 0, // TODO: set real price
-          priceIsPlaceholder: true,
+          price: 98, // DEMO: matches the main dish catalogue
         },
         {
           id: 'lobster-corn-boil',
@@ -204,8 +201,7 @@ export const menuContent: MenuContent = {
           image: '/images/seafood/lobster-corn-boil.png',
           imageAlt:
             'Shared boil with langoustines, lobster claws, corn, baby potatoes, tomatoes and sausage',
-          price: 0, // TODO: set real price
-          priceIsPlaceholder: true,
+          price: 152, // DEMO: matches the main dish catalogue
         },
       ],
     },
@@ -233,8 +229,7 @@ export const menuContent: MenuContent = {
           image: '/images/seafood/spiced-prawns-chickpeas.png',
           imageAlt:
             'Grilled spiced prawns on tomato and chickpea stew with yogurt, lemon and herbs',
-          price: 0, // TODO: set real price
-          priceIsPlaceholder: true,
+          price: 48, // DEMO: matches the main dish catalogue
         },
       ],
     },
