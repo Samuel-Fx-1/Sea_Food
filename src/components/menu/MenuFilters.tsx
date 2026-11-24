@@ -8,6 +8,10 @@ export const menuCategories: Array<'All' | DishCategory> = [
   'Platters',
   'Grilled',
   'Starters',
+  'Raw Bar',
+  'Small Plates',
+  'Mains',
+  'Desserts',
 ];
 
 export type SortOption = 'featured' | 'price-asc' | 'price-desc' | 'name';
