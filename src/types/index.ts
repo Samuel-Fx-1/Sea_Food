@@ -42,10 +42,19 @@ export interface IntroContent {
 }
 
 export interface Dish {
+  /** Unique identifier; used as the React key for card dishes. */
+  id?: string;
+  slug?: string;
+  category?: string;
   name: string;
   note?: string;
   description: string;
   price: number;
+  /** Renders an intentional placeholder instead of a misleading price. */
+  priceIsPlaceholder?: boolean;
+  image?: string;
+  imageAlt?: string;
+  ingredients?: string[];
 }
 
 export interface MenuCategoryContent {
