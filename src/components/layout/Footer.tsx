@@ -97,7 +97,7 @@ export function Footer() {
         <span>
           © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
         </span>
-        <span>Made for the coast · TODO: add legal links</span>
+        <span>Made for the coast · Demo experience</span>
       </div>
     </footer>
   );
