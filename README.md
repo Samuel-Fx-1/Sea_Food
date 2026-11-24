@@ -81,12 +81,18 @@ The three forms share one [Formspree](https://formspree.io) endpoint, e.g. `VITE
 | Setting | Value |
 | --- | --- |
 | Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
 | Output directory | `dist` |
 | Node version | 22.12.0 (pinned in `.nvmrc` and `engines`) |
-| SPA fallback | `public/_redirects` with `/* /index.html 200` — keep this file in the deploy |
+| SPA fallback | `wrangler.jsonc` assets: `directory: "./dist"` and `not_found_handling: "single-page-application"` |
 | Build-time variable | `VITE_FORMSPREE_ENDPOINT` |
 
-Direct links such as `/menu`, `/rooms` and `/privacy` rely on the SPA fallback. If the project is later migrated to a `wrangler.toml` / `wrangler.json`, replace `_redirects` with `assets.directory = "./dist"` and `assets.not_found_handling = "single-page-application"`.
+Direct links such as `/menu`, `/rooms` and `/privacy` are served by `index.html` through Wrangler's SPA fallback. Build and deploy with:
+
+```bash
+npm run build
+npx wrangler deploy
+```
 
 ## Pages
 
@@ -111,8 +117,8 @@ Direct links such as `/menu`, `/rooms` and `/privacy` rely on the SPA fallback. 
 
 ```text
 .nvmrc                      Pinned Node version (22.12.0)
+wrangler.jsonc              Worker name and assets SPA fallback
 public/
-├── _redirects              SPA fallback for direct links
 ├── images/                 Local dish, room, event and gallery photos + CREDITS.md
 └── favicon.svg
 docs/screenshots/           README screenshots
