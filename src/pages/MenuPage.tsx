@@ -60,7 +60,7 @@ export default function MenuPage() {
       <section className="menu-page section-space page-gutter" aria-label="Full menu">
         <p className="notice" role="note">
           <Soup size={16} aria-hidden="true" />
-          All prices are clearly marked as placeholders and will be confirmed before launch.
+          All prices are realistic demo values, marked with DEMO comments in the source.
         </p>
         <MenuFilters
           category={category}
