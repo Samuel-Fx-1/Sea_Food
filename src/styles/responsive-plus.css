@@ -1,0 +1,260 @@
+@media (max-width: 1100px) {
+  .site-nav__links {
+    gap: var(--space-3);
+  }
+
+  .site-nav__link {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .site-footer__top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .dish-detail__layout,
+  .about-story,
+  .contact-page__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .about-story__media {
+    max-width: 560px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --header-height: 72px;
+  }
+
+  .site-nav__links {
+    display: none;
+  }
+
+  .site-nav__toggle {
+    display: grid;
+  }
+
+  .site-nav__actions {
+    margin-left: auto;
+  }
+
+  .boil-builder__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .boil-builder__summary {
+    position: static;
+  }
+
+  .build-teaser,
+  .chef-pick__card {
+    grid-template-columns: 1fr;
+  }
+
+  .build-teaser__media,
+  .chef-pick__media {
+    min-height: 360px;
+    max-height: 460px;
+  }
+
+  .gallery-strip__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .page-gutter {
+    width: min(100% - (var(--space-4) * 2), var(--container));
+  }
+
+  .section-space {
+    padding-block: var(--space-8);
+  }
+
+  .site-footer__top {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .site-footer__brand h2 {
+    font-size: 72px;
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-hero {
+    min-height: 520px;
+    padding-block: calc(var(--header-height) + var(--space-8)) var(--space-8);
+  }
+
+  .menu-page__cta,
+  .experiences-page__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dish-detail__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    columns: 2;
+  }
+
+  .contact-map iframe {
+    min-height: 340px;
+  }
+
+  .lightbox {
+    padding: var(--space-7) var(--space-4) var(--space-4);
+  }
+}
+
+@media (max-width: 640px) {
+  .site-nav__brand {
+    font-size: 20px;
+  }
+
+  .site-nav__brand .brand-mark {
+    width: 24px;
+    height: 24px;
+  }
+
+  .site-nav__actions .button--small {
+    display: none;
+  }
+
+  .section-heading-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dish-grid,
+  .room-grid,
+  .room-grid--wide,
+  .event-grid,
+  .feature-row {
+    grid-template-columns: 1fr;
+  }
+
+  .dish-card__body,
+  .room-card__body,
+  .event-card__body {
+    padding: var(--space-4);
+  }
+
+  .boil-builder__panel,
+  .chef-pick__content,
+  .booking-panel {
+    padding: var(--space-5);
+  }
+
+  .boil-builder__steps {
+    gap: var(--space-2);
+  }
+
+  .boil-builder__steps li span {
+    width: 24px;
+    height: 24px;
+  }
+
+  .choice-grid,
+  .choice-grid--dense {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-card {
+    padding: var(--space-5);
+  }
+
+  .testimonials__stage {
+    min-height: 360px;
+  }
+
+  .gallery-strip__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-grid {
+    columns: 1;
+  }
+
+  .reservation-drawer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero__content h1 {
+    font-size: 52px;
+  }
+
+  .page-hero__description {
+    font-size: 14px;
+  }
+
+  .section-heading h2,
+  .build-teaser__content h2,
+  .home-cta h2 {
+    font-size: 42px;
+  }
+
+  .counter strong {
+    font-size: 54px;
+  }
+
+  .choice-grid,
+  .choice-grid--dense {
+    grid-template-columns: 1fr;
+  }
+
+  .boil-builder__steps li {
+    font-size: 0;
+  }
+
+  .boil-builder__steps li span {
+    font-size: 11px;
+  }
+
+  .home-cta__actions,
+  .confirmation-actions {
+    flex-direction: column;
+  }
+
+  .home-cta__actions .button,
+  .confirmation-actions .button {
+    width: 100%;
+  }
+
+  .gallery-strip__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bag-illustration__meta strong {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
