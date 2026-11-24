@@ -64,14 +64,15 @@ export default function ConfirmationPage() {
                     </li>
                   ))}
                 </ul>
-                <p><small>Indicative total · all prices are placeholders</small></p>
+                <p><small>Indicative total · demo prices</small></p>
               </div>
             ) : null}
             {booking.specialRequests ? (
               <blockquote>“{booking.specialRequests}”</blockquote>
             ) : null}
+            {/* DEMO: no confirmation email is sent in this demo. */}
             <p className="confirmation-card__note">
-              TODO: connect confirmation emails. For now the request lives in “My Reservation” on this device.
+              Demo only: no confirmation email is sent. The request lives in “My Reservation” on this device.
             </p>
           </article>
         ) : enquiry ? (
@@ -91,8 +92,9 @@ export default function ConfirmationPage() {
               <li><Check size={16} aria-hidden="true" /> {enquiry.phone}</li>
             </ul>
             {enquiry.message ? <blockquote>“{enquiry.message}”</blockquote> : null}
+            {/* DEMO: no confirmation email is sent in this demo. */}
             <p className="confirmation-card__note">
-              TODO: connect confirmation emails. Room rates are placeholders until availability is confirmed.
+              Demo only: no confirmation email is sent. Room rates are confirmed when availability is checked.
             </p>
           </article>
         ) : (
