@@ -19,7 +19,7 @@ export const rooms: Room[] = [
       'Coffee machine',
       'Daily breakfast included',
     ],
-    pricePerNight: 0, // TODO: set real price
+    pricePerNight: 185, // DEMO: nightly demo rate
     capacity: 2,
     size: '32 m²',
     isFeatured: true,
@@ -43,7 +43,7 @@ export const rooms: Room[] = [
       'Daily breakfast included',
       'Late checkout on request',
     ],
-    pricePerNight: 0, // TODO: set real price
+    pricePerNight: 265, // DEMO: nightly demo rate
     capacity: 2,
     size: '48 m²',
     isFeatured: true,
@@ -66,7 +66,7 @@ export const rooms: Room[] = [
       'Laundry facilities',
       'Daily breakfast included',
     ],
-    pricePerNight: 0, // TODO: set real price
+    pricePerNight: 295, // DEMO: nightly demo rate
     capacity: 4,
     size: '60 m²',
   },
@@ -89,7 +89,7 @@ export const rooms: Room[] = [
       'Minibar',
       'Daily breakfast included',
     ],
-    pricePerNight: 0, // TODO: set real price
+    pricePerNight: 340, // DEMO: nightly demo rate
     capacity: 2,
     size: '55 m²',
   },
