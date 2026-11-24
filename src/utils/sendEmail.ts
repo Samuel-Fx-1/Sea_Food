@@ -28,7 +28,17 @@ export async function sendEmail(
   endpoint: string | undefined,
   payload: EmailPayload,
 ): Promise<boolean> {
-  if (!endpoint) return false;
+  // Honeypot: silently drop submissions where the hidden field was filled in.
+  if (typeof payload._gotcha === 'string' && payload._gotcha.trim()) return false;
+
+  if (!endpoint) {
+    if (import.meta.env.DEV) {
+      console.warn(
+        '[Sea_Food] VITE_FORMSPREE_ENDPOINT is not set. Form submissions are saved locally only.',
+      );
+    }
+    return false;
+  }
 
   let response: Response;
   try {

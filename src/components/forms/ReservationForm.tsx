@@ -33,6 +33,7 @@ const schema = z
       .refine((value) => Number(value) >= 1, 'At least one guest.')
       .refine((value) => Number(value) <= 12, 'For larger parties, please call us.'),
     specialRequests: z.string().max(500, 'Please keep notes under 500 characters.'),
+    _gotcha: z.string().max(200).optional(),
   })
   .superRefine((values, context) => {
     if (!values.date) {
@@ -63,6 +64,8 @@ export function ReservationForm() {
   const { items, total, clearCart } = useCart();
   const bounds = useMemo(() => getDateBounds(), []);
   const [submitError, setSubmitError] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const emailConfigured = Boolean(import.meta.env.VITE_FORMSPREE_ENDPOINT);
 
   const {
     register,
@@ -79,6 +82,7 @@ export function ReservationForm() {
       time: '',
       guests: '2',
       specialRequests: '',
+      _gotcha: '',
     },
   });
 
@@ -87,12 +91,21 @@ export function ReservationForm() {
 
   const onSubmit = async (values: FormValues): Promise<void> => {
     setSubmitError('');
+    setSubmitSuccess(false);
+
+    // Honeypot: bots get a quiet success, with no email and no saved booking.
+    if (values._gotcha) {
+      setSubmitSuccess(true);
+      return;
+    }
+
     const reference = createReference('TBL');
 
     try {
-      await sendEmail(import.meta.env.VITE_FORMSPREE_RESERVATION_ENDPOINT, {
+      await sendEmail(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
         _subject: `Table request ${reference} — ${values.name}`,
         _replyto: values.email,
+        _gotcha: values._gotcha ?? '',
         Reference: reference,
         Name: values.name,
         Email: values.email,
@@ -131,11 +144,22 @@ export function ReservationForm() {
       },
     ]);
     clearCart();
+    setSubmitSuccess(true);
+    // Let the success state register before opening the confirmation page.
+    await new Promise((resolve) => {
+      setTimeout(resolve, 500);
+    });
     navigate(`/reservations/confirmation?ref=${reference}&kind=table`, { replace: true });
   };
 
   return (
     <form className="booking-form" onSubmit={handleSubmit(onSubmit)} noValidate>
+      <div className="sr-only" aria-hidden="true">
+        <label>
+          Leave this field empty
+          <input type="text" tabIndex={-1} autoComplete="off" {...register('_gotcha')} />
+        </label>
+      </div>
       <div className="form-grid">
         <label className="form-field">
           <span>Name</span>
@@ -209,10 +233,19 @@ export function ReservationForm() {
         <small>Demo prices. Nothing is charged.</small>
       </div>
 
+      {import.meta.env.DEV && !emailConfigured ? (
+        <p className="booking-form__disclaimer" role="status">
+          Demo mode: <code>VITE_FORMSPREE_ENDPOINT</code> is not set, so this request is saved on
+          this device only. Add it to <code>.env</code> and restart the dev server to send email.
+        </p>
+      ) : null}
       <button className="button button--gold button--block" type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Sending…' : 'Request this table'}
       </button>
       {submitError ? <p className="form-error" role="alert">{submitError}</p> : null}
+      {submitSuccess ? (
+        <p className="form-success" role="status">Request saved — opening your confirmation…</p>
+      ) : null}
       <p className="booking-form__disclaimer">
         We email your request when delivery is configured and also keep it on this device in “My Reservation”.
       </p>

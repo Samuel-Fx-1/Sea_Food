@@ -2,7 +2,9 @@
 
 A multi-page seaside hotel and booking platform built with **React + TypeScript + Vite**. It brings together Atlantic seafood, a build-your-own bag boil wizard, rooms and suites, experiences, a gallery with lightbox, and a local reservation flow — all in one ocean-blue, sand and coral design system.
 
-> **Demo launch:** the hotel name, tagline, contact details, prices and map coordinates are realistic demo values for the competition entry, marked with `// DEMO` comments. Many photographs still use gradient fallbacks until real photos are added.
+> **Demo launch:** the hotel name, tagline, contact details, prices and map coordinates are realistic demo values for the competition entry, marked with `// DEMO` comments. The 60 dish, room, event and gallery photos are local JPEGs credited in [`public/images/CREDITS.md`](public/images/CREDITS.md); gradient fallbacks still cover any missing or failed image.
+>
+> **Live demo:** https://example.com/sea-food (placeholder — replace with the Cloudflare deployment URL).
 
 ## Screenshots
 
@@ -23,7 +25,7 @@ Captured from the production preview build:
 - **Menu** — 45 typed dishes from the single `src/data/dishes.ts` catalogue, now covering Crab Boil, Bag Boil, Platters, Grilled, Starters, Raw Bar, Small Plates, Mains and Desserts, with category filters, search, sorting, badges, spice meters and demo pricing.
 - **Dish detail pages** — ingredients, serving size, heat level, tags, and “Add to reservation”.
 - **Bag Boil Builder** — five-step wizard (size → seafood → extras → sauce & heat → review) with an animated bag illustration and a live indicative total.
-- **Bookings** — react-hook-form + zod validated table reservations, room enquiries and contact messages, emailed through Formspree when configured and saved in `localStorage`, with a confirmation page and a “My Reservation” drawer.
+- **Bookings** — react-hook-form + zod validated table reservations, room enquiries and contact messages, emailed through a single Formspree endpoint when configured and saved in `localStorage` for "My Reservation". All three forms have loading, success and error states, a honeypot spam field, and a clear development notice when email is not configured.
 - **Legal pages** — simple Privacy and Terms pages linked in the footer.
 - **Rooms & Suites** — four seaside rooms with amenity lists and enquiry links that pre-fill the room form.
 - **Gallery** — 16-item masonry gallery with category filters, keyboard/swipe lightbox and graceful image fallbacks.
@@ -44,11 +46,14 @@ Captured from the production preview build:
 | SEO | react-helmet-async |
 | Styling | Plain CSS design system with CSS variables (two fonts: Cormorant Garamond + DM Sans) |
 | Linting | ESLint 10 flat config with typescript-eslint |
+| Node | 22.12.0 pinned in `.nvmrc` and `engines` (Vite 8 requires ≥20.19 / ≥22.12) |
+| Deploy | Cloudflare Workers Builds / Pages static output |
 
 ## Run locally
 
 ```bash
-npm install
+nvm use            # Node 22.12.0 from .nvmrc
+npm ci             # clean install from package-lock.json
 npm run dev
 ```
 
@@ -60,17 +65,28 @@ npm run lint    # ESLint
 npm run preview # preview the production build
 ```
 
-### Email forms
+### Environment variables
 
-The reservation, room enquiry and contact forms use free [Formspree](https://formspree.io) endpoints — no backend required. Copy `.env.example` to `.env` and add a form URL for each form:
+Copy `.env.example` to `.env` (gitignored — never commit it). These are all the variables in use:
 
-```dotenv
-VITE_FORMSPREE_RESERVATION_ENDPOINT=https://formspree.io/f/your-form-id
-VITE_FORMSPREE_ROOM_ENQUIRY_ENDPOINT=https://formspree.io/f/your-form-id
-VITE_FORMSPREE_CONTACT_ENDPOINT=https://formspree.io/f/your-form-id
-```
+| Variable | Needed for | Where to set it |
+| --- | --- | --- |
+| `VITE_FORMSPREE_ENDPOINT` | Email delivery for the table reservation, room enquiry and contact forms | `.env` locally; Cloudflare dashboard for builds |
+| `PIXABAY_API_KEY` | Local-only `npm run fetch-images` tool — never bundled and not needed in production | local `.env` only |
 
-`.env` is gitignored. With no endpoints configured, submissions are still saved locally so the demo flow keeps working; no email is sent. Restart the dev server after changing `.env`.
+The three forms share one [Formspree](https://formspree.io) endpoint, e.g. `VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id`. With no endpoint configured, submissions are still saved locally, the forms explain this in development, and no email is sent. Restart the dev server after changing `.env`.
+
+## Deployment (Cloudflare Workers Builds: sea-food)
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Node version | 22.12.0 (pinned in `.nvmrc` and `engines`) |
+| SPA fallback | `public/_redirects` with `/* /index.html 200` — keep this file in the deploy |
+| Build-time variable | `VITE_FORMSPREE_ENDPOINT` |
+
+Direct links such as `/menu`, `/rooms` and `/privacy` rely on the SPA fallback. If the project is later migrated to a `wrangler.toml` / `wrangler.json`, replace `_redirects` with `assets.directory = "./dist"` and `assets.not_found_handling = "single-page-application"`.
 
 ## Pages
 
@@ -94,6 +110,13 @@ VITE_FORMSPREE_CONTACT_ENDPOINT=https://formspree.io/f/your-form-id
 ## Folder structure
 
 ```text
+.nvmrc                      Pinned Node version (22.12.0)
+public/
+├── _redirects              SPA fallback for direct links
+├── images/                 Local dish, room, event and gallery photos + CREDITS.md
+└── favicon.svg
+docs/screenshots/           README screenshots
+scripts/fetch-images.mjs    Pixabay downloader (local-only, uses PIXABAY_API_KEY)
 src/
 ├── assets/images/          Original WebP photography
 ├── config/site.ts          Hotel name, contact details, coordinates, currency, social links (DEMO)
@@ -113,18 +136,18 @@ src/
 │   └── forms/              ReservationForm, RoomEnquiryForm, ContactForm
 ├── pages/                  Lazy-loaded route components (including Privacy and Terms)
 ├── styles/                 Design system, component styles, page styles, theme, responsive
-├── vite-env.d.ts           Typed VITE_FORMSPREE_* environment variables
+├── vite-env.d.ts           Typed VITE_FORMSPREE_ENDPOINT variable
 ├── App.tsx                 Router
 └── main.tsx                Providers and entry point
 ```
 
 ## Images and placeholders
 
-- Existing dish photos live in `public/images/seafood/*.png`.
-- New dish, room, event and gallery photos follow `/images/<group>/<slug>.jpg` paths. Missing files render a reusable gradient + fish icon fallback with the item name, so the site never shows broken images.
+- Existing dish photos live in `public/images/seafood/*.png`; the 60 dish, room, event and gallery photos fetched from Pixabay are local `/images/<group>/<slug>.jpg` files, each credited with photographer and source page in [`public/images/CREDITS.md`](public/images/CREDITS.md).
+- Missing or failed files render a reusable gradient + fish icon fallback with the item name, so the site never shows broken images.
 - **All prices are demo values** marked with `// DEMO`. Dish, room, event and builder prices are aligned: the default Couples boil (€52 base + crab €18 + shrimp €9 + corn €3 + potatoes €4) matches the €86 Couples Bag Boil dish.
 - Contact details, address, social URLs and map coordinates are demo values in `src/config/site.ts`; the contact map centres on the configured coordinates.
 
 ## Notes
 
-The original one-page Ondine site and its working reservation form are preserved inside the Home route; the new reservation flow adds the react-hook-form/zod version without removing the earlier functionality. The archived static site remains under `old/`.
+The original one-page site and its working reservation form are preserved inside the Home route; the new reservation flow adds the react-hook-form/zod version without removing the earlier functionality. The archived static site remains under `old/`.
