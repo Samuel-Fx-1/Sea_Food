@@ -29,37 +29,37 @@ export const sauceChoices: SauceChoice[] = [
 ];
 export const spiceChoices = ['Mild', 'Medium', 'Hot', 'Extra Hot'] as const;
 
-/** Indicative prices only. TODO: confirm final builder pricing. */
+/** DEMO: base bag prices. Couples/Family match the Couples and Family bag boil dishes. */
 export const sizePrices: Record<BoilSize, number> = {
-  Couples: 48, // TODO: set real price
-  Family: 92, // TODO: set real price
-  Party: 148, // TODO: set real price
+  Couples: 52, // DEMO: 2 guests
+  Family: 96, // DEMO: 4–5 guests
+  Party: 168, // DEMO: 8 guests
 };
 
-/** Indicative supplement per seafood choice. TODO: confirm final pricing. */
+/** DEMO: supplement charged per selected seafood. */
 export const seafoodPrices: Record<SeafoodChoice, number> = {
-  crab: 18, // TODO: set real price
-  shrimp: 9, // TODO: set real price
-  'lobster tail': 16, // TODO: set real price
-  mussels: 6, // TODO: set real price
-  clams: 7, // TODO: set real price
-  crawfish: 11, // TODO: set real price
+  crab: 18, // DEMO
+  shrimp: 9, // DEMO
+  'lobster tail': 16, // DEMO
+  mussels: 6, // DEMO
+  clams: 7, // DEMO
+  crawfish: 11, // DEMO
 };
 
-/** Indicative add-on prices. TODO: confirm final pricing. */
+/** DEMO: supplement charged per selected extra. */
 export const addOnPrices: Record<AddOnChoice, number> = {
-  corn: 3, // TODO: set real price
-  potatoes: 4, // TODO: set real price
-  sausage: 5, // TODO: set real price
-  'boiled eggs': 3, // TODO: set real price
+  corn: 3, // DEMO
+  potatoes: 4, // DEMO
+  sausage: 5, // DEMO
+  'boiled eggs': 3, // DEMO
 };
 
-/** Sauces are included; the record keeps pricing explicit for future changes. */
+/** DEMO: sauces are included except the house special. */
 export const saucePrices: Record<SauceChoice, number> = {
   Cajun: 0,
   'Garlic Butter': 0,
   'Lemon Pepper': 0,
-  'House Special': 2, // TODO: confirm house special surcharge
+  'House Special': 2, // DEMO: house sauce surcharge
 };
 
 export function calculateBoilPrice(configuration: BoilConfiguration): number {
