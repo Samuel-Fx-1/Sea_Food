@@ -19,7 +19,8 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: 'gallery-seafood-platter',
-    src: '/images/seafood/seafood-platter.png',
+    // The old file was a PR screenshot and has been removed; render the fallback placeholder.
+    src: '',
     alt: 'Mixed seafood platter with oysters, prawns, crab and fresh lemon wedges',
     category: 'Seafood',
     width: 1200,
