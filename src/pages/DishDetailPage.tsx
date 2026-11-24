@@ -38,7 +38,7 @@ export default function DishDetailPage() {
 
   return (
     <>
-      <Seo title={dish.name} description={dish.description} image={dish.image} />
+      <Seo title={dish.name} description={dish.description} image={dish.image || undefined} />
       <article className="dish-detail page-gutter">
         <Link className="back-link" to="/menu">
           <ArrowLeft size={16} aria-hidden="true" /> Back to menu
