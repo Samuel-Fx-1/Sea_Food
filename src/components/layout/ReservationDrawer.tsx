@@ -4,13 +4,18 @@ import { CalendarCheck, ShoppingBag, X } from 'lucide-react';
 import { formatPrice } from '../../config/site';
 import { useCart } from '../../context/CartContext';
 import { useUi } from '../../context/UiContext';
-import { readTableBookings } from '../../utils/bookingStorage';
+import {
+  readRoomEnquiries,
+  readTableBookings,
+} from '../../utils/bookingStorage';
 
 export function ReservationDrawer() {
   const { isDrawerOpen, closeDrawer } = useUi();
   const { items, total, removeItem } = useCart();
   const bookings = readTableBookings();
+  const enquiries = readRoomEnquiries();
   const latestBooking = bookings[bookings.length - 1];
+  const latestEnquiry = enquiries[enquiries.length - 1];
 
   return (
     <AnimatePresence>
@@ -61,6 +66,18 @@ export function ReservationDrawer() {
               </div>
             ) : null}
 
+            {latestEnquiry ? (
+              <div className="reservation-drawer__booking">
+                <CalendarCheck size={20} aria-hidden="true" />
+                <div>
+                  <strong>{latestEnquiry.reference} · Room enquiry</strong>
+                  <span>
+                    {latestEnquiry.checkIn} → {latestEnquiry.checkOut} · {latestEnquiry.guests} guests
+                  </span>
+                </div>
+              </div>
+            ) : null}
+
             <div className="reservation-drawer__items">
               {items.length === 0 ? (
                 <div className="reservation-drawer__empty">
@@ -81,7 +98,7 @@ export function ReservationDrawer() {
                           : 'Menu dish'}
                       </small>
                     </div>
-                    <span>{formatPrice(item.unitPrice * item.quantity, true)}</span>
+                    <span>{formatPrice(item.unitPrice * item.quantity)}</span>
                     <button
                       type="button"
                       onClick={() => removeItem(item.id)}
@@ -97,7 +114,7 @@ export function ReservationDrawer() {
             <footer className="reservation-drawer__footer">
               <div>
                 <span>Indicative total</span>
-                <strong>{formatPrice(total, true)}</strong>
+                <strong>{formatPrice(total)}</strong>
               </div>
               <Link className="button button--gold" to="/reservations" onClick={closeDrawer}>
                 Complete reservation
