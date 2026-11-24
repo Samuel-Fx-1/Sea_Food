@@ -1,7 +1,7 @@
 export interface SocialLink {
   label: string;
   href: string;
-  icon: 'instagram' | 'facebook' | 'twitter';
+  icon: 'instagram' | 'facebook' | 'tiktok';
 }
 
 export interface SiteConfig {
@@ -25,6 +25,11 @@ export interface SiteConfig {
     code: string;
     symbol: string;
     locale: string;
+  };
+  priceRange: {
+    dishes: { min: number; max: number };
+    roomsPerNight: { min: number; max: number };
+    eventsFrom: number;
   };
   social: SocialLink[];
   mapEmbedUrl: string;
@@ -67,10 +72,16 @@ export const siteConfig: SiteConfig = {
     symbol: '€', // DEMO
     locale: 'en-IE', // DEMO
   },
+  priceRange: {
+    // DEMO: matches the min/max in dishes.ts, rooms.ts and events.ts.
+    dishes: { min: 11, max: 185 },
+    roomsPerNight: { min: 185, max: 340 },
+    eventsFrom: 35,
+  },
   social: [
     { label: 'Instagram', href: 'https://www.instagram.com/seafoodhotel', icon: 'instagram' }, // DEMO
     { label: 'Facebook', href: 'https://www.facebook.com/seafoodhotel', icon: 'facebook' }, // DEMO
-    { label: 'X', href: 'https://x.com/seafoodhotel', icon: 'twitter' }, // DEMO
+    { label: 'TikTok', href: 'https://www.tiktok.com/@seafoodhotel', icon: 'tiktok' }, // DEMO
   ],
   mapEmbedUrl: `https://www.openstreetmap.org/export/embed.html?bbox=${demoMapBounds}&layer=mapnik&marker=${demoLatitude}%2C${demoLongitude}`, // DEMO: built from the coordinates above
 };
