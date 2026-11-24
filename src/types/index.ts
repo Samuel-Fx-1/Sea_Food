@@ -41,8 +41,37 @@ export interface IntroContent {
   bottomMark: string;
 }
 
+export type DishCategory =
+  | 'Crab Boil'
+  | 'Bag Boil'
+  | 'Platters'
+  | 'Grilled'
+  | 'Starters';
+
+export type SpiceLevel = 0 | 1 | 2 | 3;
+
 export interface Dish {
-  /** Unique identifier; used as the React key for card dishes. */
+  id: string;
+  slug: string;
+  name: string;
+  category: DishCategory;
+  description: string;
+  ingredients: string[];
+  spiceLevel: SpiceLevel;
+  price: number;
+  image: string;
+  imageAlt: string;
+  gallery?: string[];
+  isSignature?: boolean;
+  isPopular?: boolean;
+  serves: string;
+  tags: string[];
+  note?: string;
+  priceIsPlaceholder?: boolean;
+}
+
+/** The original bistro menu item shape, kept for the archived menu section. */
+export interface LegacyDish {
   id?: string;
   slug?: string;
   category?: string;
@@ -50,7 +79,6 @@ export interface Dish {
   note?: string;
   description: string;
   price: number;
-  /** Renders an intentional placeholder instead of a misleading price. */
   priceIsPlaceholder?: boolean;
   image?: string;
   imageAlt?: string;
@@ -61,7 +89,7 @@ export interface MenuCategoryContent {
   numeral: string;
   title: string;
   note: string;
-  dishes: Dish[];
+  dishes: LegacyDish[];
 }
 
 export interface MenuContent {
@@ -191,4 +219,108 @@ export interface ReservationError {
 export interface DateBounds {
   min: string;
   max: string;
+}
+
+export interface Room {
+  id: string;
+  slug: string;
+  name: string;
+  type: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  amenities: string[];
+  pricePerNight: number;
+  capacity: number;
+  size: string;
+  isFeatured?: boolean;
+}
+
+export interface HotelEvent {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  duration: string;
+  capacity: string;
+  priceFrom: number;
+}
+
+export interface Testimonial {
+  id: string;
+  quote: string;
+  name: string;
+  role: string;
+  location: string;
+  rating: 1 | 2 | 3 | 4 | 5;
+  image?: string;
+}
+
+export type GalleryCategory = 'Seafood' | 'Rooms' | 'Coast' | 'Events';
+
+export interface GalleryItem {
+  id: string;
+  src: string;
+  alt: string;
+  category: GalleryCategory;
+  width: number;
+  height: number;
+}
+
+export type BoilSize = 'Couples' | 'Family' | 'Party';
+export type SeafoodChoice =
+  | 'crab'
+  | 'shrimp'
+  | 'lobster tail'
+  | 'mussels'
+  | 'clams'
+  | 'crawfish';
+export type AddOnChoice = 'corn' | 'potatoes' | 'sausage' | 'boiled eggs';
+export type SauceChoice = 'Cajun' | 'Garlic Butter' | 'Lemon Pepper' | 'House Special';
+export type SpiceChoice = 'Mild' | 'Medium' | 'Hot' | 'Extra Hot';
+
+export interface BoilConfiguration {
+  size: BoilSize;
+  seafood: SeafoodChoice[];
+  addOns: AddOnChoice[];
+  sauce: SauceChoice;
+  spice: SpiceChoice;
+}
+
+export interface CartItem {
+  id: string;
+  kind: 'dish' | 'boil';
+  name: string;
+  unitPrice: number;
+  quantity: number;
+  configuration?: BoilConfiguration;
+}
+
+export interface TableBooking {
+  name: string;
+  phone: string;
+  email: string;
+  date: string;
+  time: string;
+  guests: number;
+  specialRequests: string;
+  cart: CartItem[];
+  reference: string;
+  savedAt: string;
+}
+
+export interface RoomEnquiry {
+  name: string;
+  email: string;
+  phone: string;
+  checkIn: string;
+  checkOut: string;
+  guests: number;
+  roomSlug: string;
+  message: string;
+  reference: string;
+  savedAt: string;
 }
