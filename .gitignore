@@ -12,3 +12,8 @@ node_modules/
 dist/
 dist-ssr/
 *.local
+
+# Environment / secrets (never commit API keys)
+.env
+.env.*
+!.env.example
