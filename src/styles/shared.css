@@ -1,0 +1,58 @@
+.eyebrow,
+.overline {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.27em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.overline {
+  margin: 0 0 25px;
+}
+
+.text-link {
+  display: inline-flex;
+  gap: 24px;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: gap 0.25s, color 0.25s;
+}
+
+.text-link:hover {
+  gap: 35px;
+  color: var(--gold);
+}
+
+.text-link span {
+  font-size: 19px;
+  line-height: 0;
+  font-weight: 400;
+}
+
+h1 em,
+h2 em,
+.interlude-copy em {
+  font-weight: 400;
+  color: #d0b084;
+}
+
+.intro h2,
+.menu-heading h2,
+.story-content h2,
+.visit-content h2,
+.reservation-intro h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(58px, 6.1vw, 108px);
+  line-height: 0.89;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
