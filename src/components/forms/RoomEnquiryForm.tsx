@@ -143,9 +143,10 @@ export function RoomEnquiryForm() {
       <button className="button button--gold button--block" type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Sending…' : 'Send room enquiry'}
       </button>
+      {/* DEMO: enquiries stay in localStorage; no email is sent in this demo. */}
       <p className="booking-form__disclaimer">
-        Room rates are placeholders. We will be in touch with real availability and pricing.
-        {' '}TODO: connect email delivery.
+        Room rates are demo values. We will be in touch with real availability and pricing.
+        {' '}No confirmation email is sent in this demo.
       </p>
     </form>
   );

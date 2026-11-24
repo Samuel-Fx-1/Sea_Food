@@ -30,7 +30,7 @@ export function EventCard({ event }: EventCardProps) {
           </li>
           <li>
             <CalendarDays size={14} aria-hidden="true" />{' '}
-            {formatPrice(event.priceFrom, true)} · TODO: real price
+            From {formatPrice(event.priceFrom)}
           </li>
         </ul>
       </div>

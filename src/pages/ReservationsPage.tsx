@@ -36,7 +36,7 @@ export default function ReservationsPage() {
             <KeyRound size={24} aria-hidden="true" />
             <p className="eyebrow">Stay with us</p>
             <h2 id="room-booking-title">Room enquiry</h2>
-            <p>Tell us when you would like to stay and which room catches your eye. Rates are placeholders for now.</p>
+            <p>Tell us when you would like to stay and which room catches your eye. Rates are demo values for now.</p>
           </header>
           <RoomEnquiryForm />
         </section>

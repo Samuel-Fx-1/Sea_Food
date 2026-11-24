@@ -58,6 +58,7 @@ export default function ContactPage() {
           </div>
 
           <div className="contact-map">
+            {/* DEMO: map is centred on the demo coordinates in siteConfig. */}
             <iframe
               title="Map showing the Sea_Food hotel location"
               src={siteConfig.mapEmbedUrl}
@@ -65,7 +66,8 @@ export default function ContactPage() {
               referrerPolicy="no-referrer-when-downgrade"
             />
             <p className="contact-map__note">
-              TODO: replace the placeholder map with the exact hotel coordinates.
+              Demo map centred on {siteConfig.address.line1}, {siteConfig.address.city} (
+              {siteConfig.coordinates.latitude}, {siteConfig.coordinates.longitude}).
             </p>
           </div>
         </div>

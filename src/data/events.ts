@@ -12,7 +12,7 @@ export const events: HotelEvent[] = [
     imageAlt: 'Long dinner table set on the beach at sunset with candlelight and sea views',
     duration: '3 hours',
     capacity: 'Up to 40 guests',
-    priceFrom: 0, // TODO: set real price
+    priceFrom: 95, // DEMO: starting demo price
   },
   {
     id: 'seaside-wedding',
@@ -25,7 +25,7 @@ export const events: HotelEvent[] = [
     imageAlt: 'Wedding celebration by the sea with guests seated at decorated outdoor tables',
     duration: 'Full day',
     capacity: 'Up to 120 guests',
-    priceFrom: 0, // TODO: set real price
+    priceFrom: 4500, // DEMO: starting demo price
   },
   {
     id: 'family-weekend',
@@ -38,7 +38,7 @@ export const events: HotelEvent[] = [
     imageAlt: 'Family enjoying a seafood platter together on a terrace beside the coast',
     duration: 'Two nights',
     capacity: 'Up to 8 guests',
-    priceFrom: 0, // TODO: set real price
+    priceFrom: 890, // DEMO: starting demo price
   },
   {
     id: 'live-music-night',
@@ -51,6 +51,6 @@ export const events: HotelEvent[] = [
     imageAlt: 'Live musicians performing in a warmly lit seafood bistro filled with guests',
     duration: 'Evening, 20:00 to late',
     capacity: 'Up to 80 guests',
-    priceFrom: 0, // TODO: set real price
+    priceFrom: 35, // DEMO: starting demo price
   },
 ];

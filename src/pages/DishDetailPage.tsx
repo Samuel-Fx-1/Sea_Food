@@ -108,8 +108,8 @@ export default function DishDetailPage() {
 
             <div className="dish-detail__order">
               <div>
-                <small>Placeholder price</small>
-                <Price value={dish.price} placeholder={dish.priceIsPlaceholder} />
+                <small>Demo price</small>
+                <Price value={dish.price} />
               </div>
               <button className="button button--gold" type="button" onClick={addToReservation}>
                 <Plus size={16} aria-hidden="true" /> Add to reservation

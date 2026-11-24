@@ -47,8 +47,8 @@ export function RoomCard({ room, onEnquire }: RoomCardProps) {
         <div className="room-card__footer">
           <div>
             <small>From</small>
-            <strong>{formatPrice(room.pricePerNight, true)}</strong>
-            <small>/ night · TODO: real price</small>
+            <strong>{formatPrice(room.pricePerNight)}</strong>
+            <small>/ night · DEMO rate</small>
           </div>
           <button className="button button--ghost" type="button" onClick={() => onEnquire(room.slug)}>
             Enquire

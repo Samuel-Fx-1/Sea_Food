@@ -2,11 +2,11 @@
 
 A multi-page seaside hotel and booking platform built with **React + TypeScript + Vite**. It brings together Atlantic seafood, a build-your-own bag boil wizard, rooms and suites, experiences, a gallery with lightbox, and a local reservation flow — all in one ocean-blue, sand and coral design system.
 
-> **Placeholder launch:** the hotel name, tagline, contact details, prices, map coordinates and many photographs are intentional placeholders for the competition entry. Search `TODO` across `src/` to see everything that still needs real content.
+> **Demo launch:** the hotel name, tagline, contact details, prices and map coordinates are realistic demo values for the competition entry, marked with `// DEMO` comments. Many photographs still use gradient fallbacks until real photos are added.
 
 ## Preview
 
-<!-- TODO: add a hero screenshot here, e.g. ![Sea_Food home](docs/screenshots/home.png) -->
+<!-- DEMO: add a hero screenshot here, e.g. ![Sea_Food home](docs/screenshots/home.png) -->
 
 _A screenshot will be added before the final handover._
 
@@ -14,7 +14,7 @@ _A screenshot will be added before the final handover._
 
 - **12 lazy-loaded routes** with animated transitions, scroll-to-top and per-page SEO metadata.
 - **Shared layout** — sticky navbar that starts transparent over the hero and turns solid on scroll, mobile hamburger menu, newsletter/social footer, light/dark theme toggle persisted to `localStorage`.
-- **Menu** — 29 typed dishes across Crab Boil, Bag Boil, Platters, Grilled and Starters, with category filters, search, sorting, badges, spice meters and placeholder pricing.
+- **Menu** — 29 typed dishes across Crab Boil, Bag Boil, Platters, Grilled and Starters, with category filters, search, sorting, badges, spice meters and demo pricing.
 - **Dish detail pages** — ingredients, serving size, heat level, tags, and “Add to reservation”.
 - **Bag Boil Builder** — five-step wizard (size → seafood → extras → sauce & heat → review) with an animated bag illustration and a live indicative total.
 - **Bookings** — react-hook-form + zod validated table reservations and room enquiries, saved in `localStorage`, with a confirmation page and a “My Reservation” drawer.
@@ -75,7 +75,7 @@ npm run preview # preview the production build
 ```text
 src/
 ├── assets/images/          Original WebP photography
-├── config/site.ts          Hotel name, contact details, currency, social links, TODOs
+├── config/site.ts          Hotel name, contact details, coordinates, currency, social links (DEMO)
 ├── context/                Cart and UI drawer providers
 ├── data/                   dishes, rooms, events, testimonials, gallery, legacy site copy
 ├── hooks/                  Theme, scroll reveal, hero parallax, legacy reservation hook
@@ -100,8 +100,8 @@ src/
 
 - Existing dish photos live in `public/images/seafood/*.png`.
 - New dish, room, event and gallery photos follow `/images/<group>/<slug>.jpg` paths. Missing files render a reusable gradient + fish icon fallback with the item name, so the site never shows broken images.
-- **All prices are placeholders** and display as `€—` unless they are indicative builder totals. The builder total is computed from clearly marked TODO prices in `src/utils/boilPricing.ts`.
-- Contact details, address, social URLs and map coordinates are placeholder values in `src/config/site.ts`.
+- **All prices are demo values** marked with `// DEMO`. Dish, room, event and builder prices are aligned: the default Couples boil (€52 base + crab €18 + shrimp €9 + corn €3 + potatoes €4) matches the €86 Couples Bag Boil dish.
+- Contact details, address, social URLs and map coordinates are demo values in `src/config/site.ts`; the contact map centres on the configured coordinates.
 
 ## Notes
 

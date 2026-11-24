@@ -1,3 +1,4 @@
+import { formatPrice } from '../config/site';
 import type { LegacyDish } from '../types';
 
 interface MenuDishProps {
@@ -23,12 +24,7 @@ export function MenuDish({ dish }: MenuDishProps) {
           {dish.note ? <> <small>{dish.note}</small></> : null}
         </h4>
         <span className="dots" />
-        <span
-          className={dish.priceIsPlaceholder ? 'price price--placeholder' : 'price'}
-          title={dish.priceIsPlaceholder ? 'Price to be confirmed' : undefined}
-        >
-          {dish.priceIsPlaceholder ? '€—' : `€${dish.price}`}
-        </span>
+        <span className="price">{formatPrice(dish.price)}</span>
       </div>
       <p>{dish.description}</p>
       {dish.ingredients?.length ? (

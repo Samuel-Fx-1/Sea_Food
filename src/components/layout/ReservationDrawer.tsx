@@ -119,7 +119,7 @@ export function ReservationDrawer() {
               <Link className="button button--gold" to="/reservations" onClick={closeDrawer}>
                 Complete reservation
               </Link>
-              <small>Prices are placeholders. Nothing is charged.</small>
+              <small>Demo prices. Nothing is charged.</small>
             </footer>
           </motion.aside>
         </>

@@ -67,7 +67,6 @@ export interface Dish {
   serves: string;
   tags: string[];
   note?: string;
-  priceIsPlaceholder?: boolean;
 }
 
 /** The original bistro menu item shape, kept for the archived menu section. */
@@ -79,7 +78,6 @@ export interface LegacyDish {
   note?: string;
   description: string;
   price: number;
-  priceIsPlaceholder?: boolean;
   image?: string;
   imageAlt?: string;
   ingredients?: string[];

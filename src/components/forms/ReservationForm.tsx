@@ -176,15 +176,16 @@ export function ReservationForm() {
           </ul>
         )}
         <div className="booking-form__total"><span>Indicative total</span><strong>{formatPrice(total)}</strong></div>
-        <small>All prices are placeholders. Nothing is charged.</small>
+        <small>Demo prices. Nothing is charged.</small>
       </div>
 
       <button className="button button--gold button--block" type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Sending…' : 'Request this table'}
       </button>
+      {/* DEMO: requests stay in localStorage; no email is sent in this demo. */}
       <p className="booking-form__disclaimer">
-        We keep your request on this device and show it in “My Reservation”. A real confirmation email is
-        {' '}TODO: connect email delivery.
+        We keep your request on this device and show it in “My Reservation”. No confirmation email is sent
+        {' '}in this demo.
       </p>
     </form>
   );

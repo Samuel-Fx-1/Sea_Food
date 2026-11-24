@@ -203,7 +203,7 @@ export function BoilBuilder() {
                     <ShoppingBag size={16} aria-hidden="true" /> Add to my reservation
                   </button>
                   <p className="builder-note">
-                    All builder prices are indicative placeholders. Nothing is charged.
+                    All builder prices are demo values aligned with the menu. Nothing is charged.
                   </p>
                 </div>
               ) : null}
@@ -237,7 +237,7 @@ export function BoilBuilder() {
           <div className="boil-builder__total">
             <span>Live total</span>
             <strong>{formatPrice(total)}</strong>
-            <small>Indicative · TODO confirm final pricing</small>
+            <small>Demo pricing · nothing is charged</small>
           </div>
           <ul className="boil-builder__list">
             <li>{configuration.size} bag · {configuration.seafood.length} seafood</li>

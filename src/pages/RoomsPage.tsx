@@ -30,7 +30,7 @@ export default function RoomsPage() {
           id="rooms-title"
           eyebrow="Where to stay"
           title="Find your room"
-          description="Rates are indicative placeholders until booking opens. Send an enquiry and we will help you choose."
+          description="Rates are demo values until booking opens. Send an enquiry and we will help you choose."
         />
         <div className="room-grid room-grid--wide">
           {rooms.map((room) => (
