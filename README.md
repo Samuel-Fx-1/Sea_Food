@@ -18,7 +18,7 @@ Captured from the production preview build:
 
 ## What's included
 
-- **12 lazy-loaded routes** with animated transitions, scroll-to-top and per-page SEO metadata.
+- **14 lazy-loaded routes** with animated transitions, scroll-to-top and per-page SEO metadata.
 - **Shared layout** — sticky navbar that starts transparent over the hero and turns solid on scroll, mobile hamburger menu, newsletter/social footer, light/dark theme toggle persisted to `localStorage`.
 - **Menu** — 45 typed dishes from the single `src/data/dishes.ts` catalogue, now covering Crab Boil, Bag Boil, Platters, Grilled, Starters, Raw Bar, Small Plates, Mains and Desserts, with category filters, search, sorting, badges, spice meters and demo pricing.
 - **Dish detail pages** — ingredients, serving size, heat level, tags, and “Add to reservation”.
