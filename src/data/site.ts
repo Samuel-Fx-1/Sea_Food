@@ -14,8 +14,8 @@ import type {
   VisitContent,
 } from '../types';
 
-export const siteBrand = 'ONDINE';
-export const brandAriaLabel = 'Ondine, back to top';
+export const siteBrand = 'SEA_FOOD';
+export const brandAriaLabel = 'Sea_Food, back to top';
 export const skipLinkLabel = 'Skip to content';
 
 export const navLinks: NavLink[] = [
@@ -50,7 +50,7 @@ export const heroContent: HeroContent = {
 };
 
 export const introContent: IntroContent = {
-  kicker: 'THE ONDINE WAY',
+  kicker: 'THE SEA_FOOD WAY',
   heading: {
     lines: ['The best evenings'],
     prefix: 'begin ',
@@ -58,7 +58,7 @@ export const introContent: IntroContent = {
   },
   paragraphs: [
     'There is a certain hour when Lisbon slows down and the Atlantic feels close enough to touch. That is the hour we set the table.',
-    'At Ondine, the catch is fresh, the wine is poured generously, and dinner is never in a hurry.',
+    'At Sea_Food, the catch is fresh, the wine is poured generously, and dinner is never in a hurry.',
   ],
   cta: {
     label: 'Make an evening of it',
@@ -86,7 +86,7 @@ export const storyContent: StoryContent = {
     right: 'A DIFFERENT KIND OF CURRENT',
   },
   image: storyImage,
-  imageAlt: 'Chef Inês Valente in the softly lit Ondine kitchen',
+  imageAlt: 'Chef Inês Valente in the softly lit Sea_Food kitchen',
   imageCaption: 'INÊS VALENTE · CHEF & FOUNDER',
   overline: 'THE HAND BEHIND THE TIDE',
   heading: {
@@ -94,7 +94,7 @@ export const storyContent: StoryContent = {
     emphasis: 'listens to the sea.',
   },
   paragraphs: [
-    "Chef Inês Valente grew up between Setúbal's fish markets and long family lunches that never ended when the plates were cleared. At Ondine, she brings that same generous spirit to the table.",
+    "Chef Inês Valente grew up between Setúbal's fish markets and long family lunches that never ended when the plates were cleared. At Sea_Food, she brings that same generous spirit to the table.",
     'Her cooking is guided by the day’s catch, the seasons, and a simple belief: when an ingredient is this good, the kindest thing is to let it speak.',
   ],
   quote:
@@ -130,7 +130,7 @@ export const visitContent: VisitContent = {
   walkins: 'Walk-ins are always welcome at the bar.',
   image: visitImage,
   imageAlt:
-    "Ondine's intimate candlelit dining room with tiled walls and a navy banquette",
+    "Sea_Food's intimate candlelit dining room with tiled walls and a navy banquette",
   imageCaption: "THERE'S ALWAYS TIME FOR ONE MORE GLASS",
 };
 
@@ -176,18 +176,18 @@ export const reservationContent: ReservationContent = {
     'A special occasion, a quiet corner, anything we should know...',
   submitLabel: 'Save my table request',
   disclaimer:
-    'Requests are saved on this device only. This does not confirm a reservation or send a message to the restaurant.',
+    'Requests are saved on this device and emailed when delivery is configured. This does not confirm a reservation.',
   successTitle: 'Your evening is noted.',
   successDisclaimer:
-    'Saved on this device only. No message has been sent, and your table is not confirmed.',
+    'Saved on this device; emailed when delivery is configured. Your table is not confirmed yet.',
   editLabel: 'Edit this request',
 };
 
 export const footerContent: FooterContent = {
-  brand: 'ONDINE',
+  brand: 'SEA_FOOD',
   brandWave: '~',
   taglineLines: ['An Atlantic evening,', 'right here in Lisbon.'],
-  copyright: 'ONDINE · LISBOA',
+  copyright: 'SEA_FOOD · LISBOA',
   links: [
     { label: 'MENU', href: '#menu' },
     { label: 'STORY', href: '#story' },
