@@ -1,30 +1,14 @@
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Footer } from '../components/Footer';
-import { Hero } from '../components/Hero';
-import { Interlude } from '../components/Interlude';
-import { Intro } from '../components/Intro';
-import { MenuSection } from '../components/MenuSection';
-import { Navbar } from '../components/Navbar';
-import { Reservations } from '../components/Reservations';
-import { Story } from '../components/Story';
-import { Visit } from '../components/Visit';
+import { Seo } from '../components/common/Seo';
 
-export function HomePage() {
-  useScrollReveal();
-
+export default function HomePage() {
   return (
-    <>
-      <Navbar />
-      <main id="main">
-        <Hero />
-        <Intro />
-        <MenuSection />
-        <Interlude />
-        <Story />
-        <Visit />
-        <Reservations />
-      </main>
-      <Footer />
-    </>
+    <section className="page-shell page-gutter">
+      <Seo
+        title="Home"
+        description="Sea_Food Hotel & Resort — where the Atlantic comes to stay."
+      />
+      <h1>Home</h1>
+      <p>Seaside dining, rooms and experiences are coming together here.</p>
+    </section>
   );
 }
