@@ -1,0 +1,65 @@
+.intro {
+  padding-top: 128px;
+  padding-bottom: 86px;
+  background: var(--ink);
+}
+
+.intro-kicker {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 10px;
+  letter-spacing: 0.23em;
+  color: var(--gold);
+}
+
+.small-star {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.intro-main {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 7vw;
+  align-items: end;
+  margin-top: 30px;
+}
+
+.intro-copy {
+  padding-bottom: 6px;
+  max-width: 390px;
+}
+
+.intro-copy p,
+.story-content > p:not(.overline),
+.visit-lede,
+.reservation-intro > p {
+  font-size: 14px;
+  line-height: 1.95;
+  color: #bec1ba;
+}
+
+.intro-copy p:first-child {
+  margin-top: 0;
+}
+
+.intro-copy .text-link {
+  margin-top: 20px;
+}
+
+.intro-bottom {
+  border-top: 1px solid var(--line);
+  margin-top: 104px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+
+.intro-bottom span:last-child {
+  font-size: 19px;
+}
