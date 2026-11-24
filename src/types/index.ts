@@ -46,7 +46,11 @@ export type DishCategory =
   | 'Bag Boil'
   | 'Platters'
   | 'Grilled'
-  | 'Starters';
+  | 'Starters'
+  | 'Raw Bar'
+  | 'Small Plates'
+  | 'Mains'
+  | 'Desserts';
 
 export type SpiceLevel = 0 | 1 | 2 | 3;
 
@@ -67,39 +71,6 @@ export interface Dish {
   serves: string;
   tags: string[];
   note?: string;
-}
-
-/** The original bistro menu item shape, kept for the archived menu section. */
-export interface LegacyDish {
-  id?: string;
-  slug?: string;
-  category?: string;
-  name: string;
-  note?: string;
-  description: string;
-  price: number;
-  image?: string;
-  imageAlt?: string;
-  ingredients?: string[];
-}
-
-export interface MenuCategoryContent {
-  numeral: string;
-  title: string;
-  note: string;
-  dishes: LegacyDish[];
-}
-
-export interface MenuContent {
-  topline: SectionToplineContent;
-  overline: string;
-  heading: HeadingContent;
-  description: string;
-  image: string;
-  imageAlt: string;
-  caption: string[];
-  categories: MenuCategoryContent[];
-  footnote: string;
 }
 
 export interface InterludeContent {
