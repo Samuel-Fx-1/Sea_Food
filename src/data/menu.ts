@@ -101,7 +101,145 @@ export const menuContent: MenuContent = {
       ],
     },
     {
-      numeral: 'IV',
+      numeral: 'V',
+      title: 'Platters',
+      note: 'FOR THE MIDDLE OF THE TABLE',
+      dishes: [
+        {
+          id: 'seafood-platter',
+          slug: 'seafood-platter',
+          category: 'Platters',
+          name: 'Seafood Platter',
+          description:
+            'A big mixed platter with prawns, fresh oysters, sliced raw fish, lobster tails, crab and mussels, served with lemon wedges, fresh parsley and dipping sauces.',
+          ingredients: [
+            'prawns',
+            'oysters',
+            'raw fish slices',
+            'lobster tail',
+            'crab',
+            'mussels',
+            'lemon',
+            'parsley',
+            'dipping sauce',
+          ],
+          image: '/images/seafood/seafood-platter.png',
+          imageAlt:
+            'Mixed seafood platter with prawns, oysters, raw fish, lobster tails, crab and mussels with lemon and parsley',
+          price: 0, // TODO: set real price
+          priceIsPlaceholder: true,
+        },
+        {
+          id: 'grilled-seafood-platter',
+          slug: 'grilled-seafood-platter',
+          category: 'Platters',
+          name: 'Grilled Seafood Platter',
+          description:
+            'Fire-grilled crabs, shrimp and baked scallops with a savory topping, served with baby potatoes and sweet corn.',
+          ingredients: [
+            'crab',
+            'shrimp',
+            'scallops',
+            'baby potatoes',
+            'corn',
+            'garlic',
+            'herbs',
+            'butter',
+          ],
+          image: '/images/seafood/grilled-seafood-platter.png',
+          imageAlt:
+            'Grilled crabs, shrimp and baked scallops served with baby potatoes and sweet corn',
+          price: 0, // TODO: set real price
+          priceIsPlaceholder: true,
+        },
+      ],
+    },
+    {
+      numeral: 'VI',
+      title: 'Boils',
+      note: 'SPICED / BUTTERY / TO SHARE',
+      dishes: [
+        {
+          id: 'cajun-seafood-boil',
+          slug: 'cajun-seafood-boil',
+          category: 'Boils',
+          name: 'Cajun Seafood Boil',
+          description:
+            'Lobster tails, shrimp and mussels boiled in Cajun butter spices, served with corn on the cob, lemon, parsley and fresh bread.',
+          ingredients: [
+            'lobster tail',
+            'shrimp',
+            'mussels',
+            'corn',
+            'Cajun spice',
+            'butter',
+            'lemon',
+            'parsley',
+            'bread',
+          ],
+          image: '/images/seafood/cajun-seafood-boil.png',
+          imageAlt:
+            'Cajun seafood boil with lobster tails, shrimp, mussels, corn, lemon and fresh bread',
+          price: 0, // TODO: set real price
+          priceIsPlaceholder: true,
+        },
+        {
+          id: 'lobster-corn-boil',
+          slug: 'lobster-corn-boil',
+          category: 'Boils',
+          name: 'Lobster and Corn Seafood Boil',
+          description:
+            'A big shared platter of langoustines, lobster claws, corn, baby potatoes, cherry tomatoes and sausage slices, finished with garlic herb butter and lemon.',
+          ingredients: [
+            'langoustines',
+            'lobster claw',
+            'corn',
+            'baby potatoes',
+            'cherry tomatoes',
+            'sausage',
+            'garlic butter',
+            'herbs',
+            'lemon',
+          ],
+          image: '/images/seafood/lobster-corn-boil.png',
+          imageAlt:
+            'Shared boil with langoustines, lobster claws, corn, baby potatoes, tomatoes and sausage',
+          price: 0, // TODO: set real price
+          priceIsPlaceholder: true,
+        },
+      ],
+    },
+    {
+      numeral: 'VII',
+      title: 'Grilled',
+      note: 'FIRE / SMOKE / HERBS',
+      dishes: [
+        {
+          id: 'spiced-prawns-chickpeas',
+          slug: 'spiced-prawns-chickpeas',
+          category: 'Grilled',
+          name: 'Spiced Prawns with Chickpeas',
+          description:
+            'Large grilled prawns in a red spice marinade on a warm tomato and chickpea stew, with a spoon of creamy yogurt, lemon wedges and fresh herbs.',
+          ingredients: [
+            'king prawns',
+            'chickpeas',
+            'tomato',
+            'red spice mix',
+            'yogurt',
+            'lemon',
+            'parsley',
+          ],
+          image: '/images/seafood/spiced-prawns-chickpeas.png',
+          imageAlt:
+            'Grilled spiced prawns on tomato and chickpea stew with yogurt, lemon and herbs',
+          price: 0, // TODO: set real price
+          priceIsPlaceholder: true,
+        },
+      ],
+    },
+    {
+      numeral: 'VIII',
       title: 'Desserts',
       note: 'ONE LAST INDULGENCE',
       dishes: [
