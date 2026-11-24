@@ -1,25 +1,28 @@
-import type { MenuCategoryContent } from '../types';
+import type { Dish } from '../types';
 import { MenuDish } from './MenuDish';
 
 interface MenuCategoryProps {
-  category: MenuCategoryContent;
+  numeral: string;
+  title: string;
+  note: string;
+  dishes: Dish[];
 }
 
-export function MenuCategory({ category }: MenuCategoryProps) {
-  const hasCards = category.dishes.some((dish) => dish.image);
+export function MenuCategory({ numeral, title, note, dishes }: MenuCategoryProps) {
+  const hasCards = dishes.some((dish) => dish.image);
 
   return (
     <div
       className={hasCards ? 'menu-category menu-category--cards reveal' : 'menu-category reveal'}
     >
       <div className="category-header">
-        <span className="category-number">{category.numeral}</span>
-        <h3>{category.title}</h3>
-        <span className="category-note">{category.note}</span>
+        <span className="category-number">{numeral}</span>
+        <h3>{title}</h3>
+        <span className="category-note">{note}</span>
       </div>
       <div className="menu-items">
-        {category.dishes.map((dish) => (
-          <MenuDish key={dish.id ?? dish.name} dish={dish} />
+        {dishes.map((dish) => (
+          <MenuDish key={dish.id} dish={dish} />
         ))}
       </div>
     </div>
