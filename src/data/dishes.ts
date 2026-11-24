@@ -1,5 +1,6 @@
 import type { Dish } from '../types';
 
+// DEMO: realistic menu prices aligned with the builder amounts in src/utils/boilPricing.ts.
 export const dishes: Dish[] = [
   {
     id: 'classic-blue-crab-boil',
@@ -19,12 +20,11 @@ export const dishes: Dish[] = [
       'bay leaves',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 78, // DEMO
     image: '/images/seafood/classic-blue-crab-boil.jpg',
     imageAlt: 'Blue crabs piled with corn, baby potatoes and lemon wedges on a steel boil tray',
     serves: '2 guests',
     tags: ['blue crab', 'classic', 'hands-on'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'snow-crab-legs-boil',
@@ -44,12 +44,11 @@ export const dishes: Dish[] = [
       'dill',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 86, // DEMO
     image: '/images/seafood/snow-crab-legs-boil.jpg',
     imageAlt: 'Snow crab legs with corn, sausage and drawn butter served in a shallow bowl',
     serves: '2 guests',
     tags: ['snow crab', 'garlic broth', 'shared'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'king-crab-legs-boil',
@@ -68,13 +67,12 @@ export const dishes: Dish[] = [
       'parsley',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 112, // DEMO
     image: '/images/seafood/king-crab-legs-boil.jpg',
     imageAlt: 'King crab legs with charred lemon and herb butter on a dark platter',
     isSignature: true,
     serves: '2 guests',
     tags: ['king crab', 'premium', 'butter'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'garlic-butter-crab-boil',
@@ -93,12 +91,11 @@ export const dishes: Dish[] = [
       'lemon',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 82, // DEMO
     image: '/images/seafood/garlic-butter-crab-boil.jpg',
     imageAlt: 'Crab clusters coated in garlic butter with corn, potatoes and sourdough',
     serves: '2 guests',
     tags: ['garlic butter', 'crab', 'comfort'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'cajun-crab-and-corn-boil',
@@ -118,12 +115,11 @@ export const dishes: Dish[] = [
       'lemon',
     ],
     spiceLevel: 2,
-    price: 0, // TODO: set real price
+    price: 96, // DEMO
     image: '/images/seafood/cajun-crab-and-corn-boil.jpg',
     imageAlt: 'Crab and corn tossed in Cajun spices with sausage and herbs',
     serves: '3 guests',
     tags: ['Cajun', 'spicy', 'corn'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'spicy-crab-boil-with-potatoes',
@@ -143,12 +139,11 @@ export const dishes: Dish[] = [
       'butter',
     ],
     spiceLevel: 3,
-    price: 0, // TODO: set real price
+    price: 80, // DEMO
     image: '/images/seafood/spicy-crab-boil-with-potatoes.jpg',
     imageAlt: 'Spicy blue crab and baby potatoes in a chili broth with scallions',
     serves: '2 guests',
     tags: ['spicy', 'potatoes', 'crab'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'cajun-bag-boil',
@@ -168,13 +163,12 @@ export const dishes: Dish[] = [
       'parsley',
     ],
     spiceLevel: 2,
-    price: 0, // TODO: set real price
+    price: 86, // DEMO
     image: '/images/seafood/cajun-bag-boil.jpg',
     imageAlt: 'Seafood boil spilled from a paper bag with corn, sausage and lemon',
     isPopular: true,
     serves: '2 guests',
     tags: ['Cajun', 'shrimp', 'shared'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'garlic-butter-bag-boil',
@@ -194,12 +188,11 @@ export const dishes: Dish[] = [
       'thyme',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 86, // DEMO
     image: '/images/seafood/garlic-butter-bag-boil.jpg',
     imageAlt: 'Shrimp, mussels and crab in garlic butter with corn and warm bread',
     serves: '2 guests',
     tags: ['garlic butter', 'mussels', 'mild'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'lemon-pepper-bag-boil',
@@ -219,12 +212,11 @@ export const dishes: Dish[] = [
       'garlic',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 84, // DEMO
     image: '/images/seafood/lemon-pepper-bag-boil.jpg',
     imageAlt: 'Prawns, clams and corn with lemon slices and cracked black pepper',
     serves: '2 guests',
     tags: ['lemon pepper', 'bright', 'shellfish'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'whole-shabang-bag-boil',
@@ -245,14 +237,13 @@ export const dishes: Dish[] = [
       'house sauce',
     ],
     spiceLevel: 2,
-    price: 0, // TODO: set real price
+    price: 128, // DEMO
     image: '/images/seafood/whole-shabang-bag-boil.jpg',
     imageAlt: 'Overflowing bag boil with crab, shrimp, lobster, mussels, corn and potatoes',
     isSignature: true,
     serves: '3 guests',
     tags: ['everything', 'house special', 'feast'],
     note: 'Served with bibs and extra napkins.',
-    priceIsPlaceholder: true,
   },
   {
     id: 'couples-bag-boil',
@@ -271,12 +262,11 @@ export const dishes: Dish[] = [
       'parsley',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 86, // DEMO
     image: '/images/seafood/couples-bag-boil.jpg',
     imageAlt: 'Two portions of prawns, mussels and corn served in a shared boil bag',
     serves: '2 guests',
     tags: ['for two', 'customisable', 'date night'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'family-bag-boil',
@@ -296,13 +286,12 @@ export const dishes: Dish[] = [
       'bread',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 135, // DEMO
     image: '/images/seafood/family-bag-boil.jpg',
     imageAlt: 'Large family-style bag boil with crab, shrimp, sausage, corn and potatoes',
     isPopular: true,
     serves: '4–5 guests',
     tags: ['family', 'shareable', 'feast'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'cajun-seafood-boil',
@@ -323,13 +312,12 @@ export const dishes: Dish[] = [
       'bread',
     ],
     spiceLevel: 2,
-    price: 0, // TODO: set real price
+    price: 98, // DEMO
     image: '/images/seafood/cajun-seafood-boil.png',
     imageAlt:
       'Cajun seafood boil with lobster tails, shrimp, mussels, corn, lemon and fresh bread',
     serves: '2 guests',
     tags: ['Cajun', 'lobster', 'shared'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'lobster-corn-boil',
@@ -350,13 +338,12 @@ export const dishes: Dish[] = [
       'lemon',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 152, // DEMO
     image: '/images/seafood/lobster-corn-boil.png',
     imageAlt:
       'Shared boil with langoustines, lobster claws, corn, baby potatoes, tomatoes and sausage',
     serves: '4 guests',
     tags: ['lobster', 'corn', 'shared'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'royal-seafood-platter',
@@ -376,13 +363,12 @@ export const dishes: Dish[] = [
       'mignonette',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 185, // DEMO
     image: '/images/seafood/royal-seafood-platter.jpg',
     imageAlt: 'Royal seafood platter arranged with lobster, crab, prawns, oysters and scallops',
     isSignature: true,
     serves: '4 guests',
     tags: ['premium', 'raw bar', 'celebration'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'lobster-and-prawn-platter',
@@ -401,12 +387,11 @@ export const dishes: Dish[] = [
       'parsley',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 108, // DEMO
     image: '/images/seafood/lobster-and-prawn-platter.jpg',
     imageAlt: 'Grilled lobster tails and butterflied prawns with charred lemon and potatoes',
     serves: '2 guests',
     tags: ['lobster', 'prawns', 'grilled'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'oyster-and-mussel-platter',
@@ -425,12 +410,11 @@ export const dishes: Dish[] = [
       'cocktail sauce',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 64, // DEMO
     image: '/images/seafood/oyster-and-mussel-platter.jpg',
     imageAlt: 'Chilled oysters and mussels arranged on crushed ice with lemon and shallot vinegar',
     serves: '2 guests',
     tags: ['raw bar', 'oysters', 'mussels'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'chefs-sea-feast',
@@ -450,14 +434,13 @@ export const dishes: Dish[] = [
       'olive oil',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 165, // DEMO
     image: '/images/seafood/chefs-sea-feast.jpg',
     imageAlt: 'Generous mixed seafood feast with shellfish, fish and herbs for sharing',
     isPopular: true,
     serves: '4–5 guests',
     tags: ['chef selection', 'seasonal', 'shareable'],
     note: 'Selection changes with the daily catch.',
-    priceIsPlaceholder: true,
   },
   {
     id: 'seafood-platter',
@@ -478,14 +461,13 @@ export const dishes: Dish[] = [
       'dipping sauce',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 148, // DEMO
     image: '/images/seafood/seafood-platter.png',
     imageAlt:
       'Mixed seafood platter with prawns, oysters, raw fish, lobster tails, crab and mussels with lemon and parsley',
     isSignature: true,
     serves: '4 guests',
     tags: ['mixed seafood', 'raw bar', 'shareable'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'grilled-seafood-platter',
@@ -505,13 +487,12 @@ export const dishes: Dish[] = [
       'butter',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 112, // DEMO
     image: '/images/seafood/grilled-seafood-platter.png',
     imageAlt:
       'Grilled crabs, shrimp and baked scallops served with baby potatoes and sweet corn',
     serves: '3 guests',
     tags: ['grilled', 'scallops', 'shareable'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'grilled-lobster-tail',
@@ -529,13 +510,12 @@ export const dishes: Dish[] = [
       'sea salt',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 58, // DEMO
     image: '/images/seafood/grilled-lobster-tail.jpg',
     imageAlt: 'Split grilled lobster tail with charred lemon and garlic herb butter',
     isSignature: true,
     serves: '1 guest',
     tags: ['lobster', 'charcoal', 'butter'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'grilled-prawns-with-chili-butter',
@@ -553,13 +533,12 @@ export const dishes: Dish[] = [
       'smoked paprika',
     ],
     spiceLevel: 2,
-    price: 0, // TODO: set real price
+    price: 56, // DEMO
     image: '/images/seafood/grilled-prawns-with-chili-butter.jpg',
     imageAlt: 'Charred butterflied prawns glazed with chili butter and lime',
     isPopular: true,
     serves: '2 guests',
     tags: ['prawns', 'spicy', 'chili butter'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'grilled-whole-fish',
@@ -577,12 +556,11 @@ export const dishes: Dish[] = [
       'fennel',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 84, // DEMO
     image: '/images/seafood/grilled-whole-fish.jpg',
     imageAlt: 'Whole grilled fish with lemon leaf and herbs on a heated stone platter',
     serves: '3 guests',
     tags: ['whole fish', 'open fire', 'market catch'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'grilled-scallops',
@@ -600,12 +578,11 @@ export const dishes: Dish[] = [
       'chives',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 62, // DEMO
     image: '/images/seafood/grilled-scallops.jpg',
     imageAlt: 'Seared sea scallops with cauliflower purée, capers and brown butter',
     serves: '2 guests',
     tags: ['scallops', 'seared', 'brown butter'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'spiced-prawns-chickpeas',
@@ -624,14 +601,13 @@ export const dishes: Dish[] = [
       'parsley',
     ],
     spiceLevel: 2,
-    price: 0, // TODO: set real price
+    price: 48, // DEMO
     image: '/images/seafood/spiced-prawns-chickpeas.png',
     imageAlt:
       'Grilled spiced prawns on tomato and chickpea stew with yogurt, lemon and herbs',
     isPopular: true,
     serves: '2 guests',
     tags: ['prawns', 'spiced', 'chickpeas'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'calamari',
@@ -649,13 +625,12 @@ export const dishes: Dish[] = [
       'parsley',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 22, // DEMO
     image: '/images/seafood/calamari.jpg',
     imageAlt: 'Crisp fried calamari rings with lemon aioli and pickled chillies',
     isPopular: true,
     serves: '2 guests',
     tags: ['fried', 'squid', 'sharing'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'prawn-cocktail',
@@ -673,12 +648,11 @@ export const dishes: Dish[] = [
       'paprika',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 18, // DEMO
     image: '/images/seafood/prawn-cocktail.jpg',
     imageAlt: 'Prawn cocktail in a glass with lettuce, cocktail sauce and lemon',
     serves: '2 guests',
     tags: ['classic', 'chilled', 'prawns'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'crab-cakes',
@@ -697,12 +671,11 @@ export const dishes: Dish[] = [
       'butter',
     ],
     spiceLevel: 1,
-    price: 0, // TODO: set real price
+    price: 24, // DEMO
     image: '/images/seafood/crab-cakes.jpg',
     imageAlt: 'Golden crab cakes with herb yogurt and rocket salad',
     serves: '2 guests',
     tags: ['crab', 'pan-seared', 'classic'],
-    priceIsPlaceholder: true,
   },
   {
     id: 'seafood-chowder',
@@ -721,11 +694,10 @@ export const dishes: Dish[] = [
       'oyster crackers',
     ],
     spiceLevel: 0,
-    price: 0, // TODO: set real price
+    price: 19, // DEMO
     image: '/images/seafood/seafood-chowder.jpg',
     imageAlt: 'Creamy seafood chowder with clams, prawns and oyster crackers',
     serves: '2 guests',
     tags: ['soup', 'creamy', 'smoked fish'],
-    priceIsPlaceholder: true,
   },
 ];
