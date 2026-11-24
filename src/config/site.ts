@@ -17,6 +17,10 @@ export interface SiteConfig {
     city: string;
     country: string;
   };
+  coordinates: {
+    latitude: number;
+    longitude: number;
+  };
   currency: {
     code: string;
     symbol: string;
@@ -26,32 +30,49 @@ export interface SiteConfig {
   mapEmbedUrl: string;
 }
 
+// DEMO: central Lisbon waterfront coordinates used by the contact map.
+const demoLatitude = 38.7082; // DEMO
+const demoLongitude = -9.1394; // DEMO
+
+const demoMapBounds = [
+  demoLongitude - 0.012,
+  demoLatitude - 0.008,
+  demoLongitude + 0.012,
+  demoLatitude + 0.008,
+]
+  .map((value) => encodeURIComponent(value.toFixed(4)))
+  .join('%2C');
+
+// DEMO: single source of truth for hotel identity, contact details and pricing format.
 export const siteConfig: SiteConfig = {
-  name: 'Sea_Food Hotel & Resort', // TODO: replace with the competition entry hotel name
-  shortName: 'SEA_FOOD', // TODO: replace with the final short brand
-  tagline: 'Where the Atlantic comes to stay.', // TODO: replace with final tagline
+  name: 'Sea_Food Hotel & Resort', // DEMO: competition entry hotel name
+  shortName: 'SEA_FOOD', // DEMO: short brand
+  tagline: 'Where the Atlantic comes to stay.', // DEMO: final tagline
   description:
-    'A seaside hotel and resort for long lunches, slow evenings and the freshest catch on the coast.', // TODO: replace with final description
-  phone: '+351 000 000 000', // TODO: replace with real phone number
-  email: 'hello@example.com', // TODO: replace with real email address
+    'A seaside hotel and resort for long lunches, slow evenings and the freshest catch on the coast.', // DEMO: final description
+  phone: '+351 213 456 789', // DEMO: demo phone number
+  email: 'hello@seafoodhotel.example', // DEMO: demo email address (reserved .example domain)
   address: {
-    line1: 'TODO: street address', // TODO: replace with real street address
-    line2: 'TODO: district',
-    city: 'Lisboa', // TODO: confirm city
+    line1: 'Rua do Mar 28', // DEMO: demo street address
+    line2: 'Chiado', // DEMO: demo district
+    city: 'Lisboa', // DEMO: demo city
     country: 'Portugal',
   },
+  coordinates: {
+    latitude: demoLatitude, // DEMO
+    longitude: demoLongitude, // DEMO
+  },
   currency: {
-    code: 'EUR',
-    symbol: '€',
-    locale: 'en-IE',
+    code: 'EUR', // DEMO
+    symbol: '€', // DEMO
+    locale: 'en-IE', // DEMO
   },
   social: [
-    { label: 'Instagram', href: 'https://instagram.com', icon: 'instagram' }, // TODO: replace social URLs
-    { label: 'Facebook', href: 'https://facebook.com', icon: 'facebook' },
-    { label: 'X', href: 'https://x.com', icon: 'twitter' },
+    { label: 'Instagram', href: 'https://www.instagram.com/seafoodhotel', icon: 'instagram' }, // DEMO
+    { label: 'Facebook', href: 'https://www.facebook.com/seafoodhotel', icon: 'facebook' }, // DEMO
+    { label: 'X', href: 'https://x.com/seafoodhotel', icon: 'twitter' }, // DEMO
   ],
-  mapEmbedUrl:
-    'https://www.openstreetmap.org/export/embed.html?bbox=-9.16%2C38.69%2C-9.10%2C38.73&layer=mapnik', // TODO: replace with exact hotel coordinates
+  mapEmbedUrl: `https://www.openstreetmap.org/export/embed.html?bbox=${demoMapBounds}&layer=mapnik&marker=${demoLatitude}%2C${demoLongitude}`, // DEMO: built from the coordinates above
 };
 
 export interface NavigationItem {
@@ -70,14 +91,7 @@ export const navigation: NavigationItem[] = [
   { label: 'Contact', to: '/contact' },
 ];
 
-export function formatPrice(
-  amount: number,
-  isPlaceholder = false,
-): string {
-  if (isPlaceholder || amount === 0) {
-    return `${siteConfig.currency.symbol}—`;
-  }
-
+export function formatPrice(amount: number): string {
   return new Intl.NumberFormat(siteConfig.currency.locale, {
     style: 'currency',
     currency: siteConfig.currency.code,
