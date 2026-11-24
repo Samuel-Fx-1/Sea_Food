@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export function useScrollReveal(): void {
+  const { pathname } = useLocation();
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
@@ -37,5 +40,5 @@ export function useScrollReveal(): void {
       observer.disconnect();
       root.classList.remove('has-js');
     };
-  }, []);
+  }, [pathname]);
 }
