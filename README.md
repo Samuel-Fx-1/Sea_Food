@@ -1,69 +1,44 @@
-# Ondine — Seafood Bistro
+# Sea_Food Hotel & Resort
 
-A faithful rebuild of the **Ondine** seafood bistro website — an Atlantic-led restaurant in Lisbon's Chiado — using **React and TypeScript**. The layout, copy, seasonal menu, photography and visual design are preserved from the original static site.
+A multi-page seaside hotel and booking platform built with **React + TypeScript + Vite**. It brings together Atlantic seafood, a build-your-own bag boil wizard, rooms and suites, experiences, a gallery with lightbox, and a local reservation flow — all in one ocean-blue, sand and coral design system.
 
-> Original design and content: [ondine-bistr-qi9tep8y.manus.space](https://ondine-bistr-qi9tep8y.manus.space/). This repository is a reproduction for learning and portfolio purposes.
+> **Placeholder launch:** the hotel name, tagline, contact details, prices, map coordinates and many photographs are intentional placeholders for the competition entry. Search `TODO` across `src/` to see everything that still needs real content.
 
 ## Preview
 
-![Ondine hero](src/assets/images/image-1.webp)
+<!-- TODO: add a hero screenshot here, e.g. ![Sea_Food home](docs/screenshots/home.png) -->
+
+_A screenshot will be added before the final handover._
 
 ## What's included
 
-- **One-page restaurant site** — hero, introduction, seasonal menu, full-bleed interlude, chef's story, visit details, reservations and a large footer.
-- **Responsive, mobile-first layout** — down to 320 px, with an animated mobile navigation menu.
-- **Motion** — scroll-triggered reveals, subtle hero parallax and hover transitions. All motion respects `prefers-reduced-motion`.
-- **Working reservation form** — validates dates (Tuesday–Sunday, up to 90 days ahead), generates available seating times for the selected day, validates party size, name and email, and stores the request in `localStorage`. Saved requests are restored on the next visit and can be edited.
-- **Typed content** — all menu and page copy lives in `src/data` behind shared interfaces in `src/types`; components render data and contain no hardcoded menu content.
-- **Accessibility** — skip link, landmarks, labelled form controls, visible focus states and ARIA state on the mobile menu toggle.
-- **Self-contained assets** — photography and the favicon are stored locally; only Google Fonts is loaded from a CDN.
+- **12 lazy-loaded routes** with animated transitions, scroll-to-top and per-page SEO metadata.
+- **Shared layout** — sticky navbar that starts transparent over the hero and turns solid on scroll, mobile hamburger menu, newsletter/social footer, light/dark theme toggle persisted to `localStorage`.
+- **Menu** — 29 typed dishes across Crab Boil, Bag Boil, Platters, Grilled and Starters, with category filters, search, sorting, badges, spice meters and placeholder pricing.
+- **Dish detail pages** — ingredients, serving size, heat level, tags, and “Add to reservation”.
+- **Bag Boil Builder** — five-step wizard (size → seafood → extras → sauce & heat → review) with an animated bag illustration and a live indicative total.
+- **Bookings** — react-hook-form + zod validated table reservations and room enquiries, saved in `localStorage`, with a confirmation page and a “My Reservation” drawer.
+- **Rooms & Suites** — four seaside rooms with amenity lists and enquiry links that pre-fill the room form.
+- **Gallery** — 16-item masonry gallery with category filters, keyboard/swipe lightbox and graceful image fallbacks.
+- **Experiences & Events**, **About**, **Contact & Location** with an embedded map, plus a friendly **404**.
+- **Home page** — hero with parallax, original bistro sections, featured dishes, chef's pick carousel, testimonials, counters and calls to action.
+- **Accessibility and polish** — semantic landmarks, skip link, labelled controls, visible focus states, `aria-*` state, reduced-motion support, responsive layouts at 375 px / 768 px / 1280 px, lazy images with explicit dimensions, and reusable fallbacks for missing photos.
 
-## Tech stack
+## Stack
 
-- **React 19** with **TypeScript** in strict mode
-- **Vite 8** for development and production builds
-- **React hooks** for navigation state, form state, scroll reveals and hero parallax
-- **Plain CSS** — Grid, Flexbox, `clamp()` and custom properties, split by section
-- **Google Fonts** — Cormorant Garamond and DM Sans
-- **localStorage** for the demo reservation flow (no backend)
+| Concern | Choice |
+| --- | --- |
+| UI | React 19 + TypeScript (strict) |
+| Build | Vite 8 |
+| Routing | react-router-dom 7 |
+| Motion | framer-motion |
+| Forms | react-hook-form + zod + @hookform/resolvers |
+| Icons | lucide-react |
+| SEO | react-helmet-async |
+| Styling | Plain CSS design system with CSS variables (two fonts: Cormorant Garamond + DM Sans) |
+| Linting | ESLint 10 flat config with typescript-eslint |
 
-The site is a single page with anchor navigation, so React Router is intentionally not used.
-
-## Project structure
-
-```text
-.
-├── index.html                 # Vite HTML entry and document metadata
-├── vite.config.ts             # Vite + React configuration
-├── tsconfig*.json             # Strict TypeScript project configs
-├── public
-│   └── favicon.svg
-├── src
-│   ├── components             # Navbar, Hero, MenuSection, Reservations, Footer, etc.
-│   ├── pages
-│   │   └── HomePage.tsx       # Composes the one-page site
-│   ├── data
-│   │   ├── menu.ts            # Typed seasonal menu
-│   │   └── site.ts            # Typed page copy, navigation and form content
-│   ├── types
-│   │   └── index.ts           # Shared interfaces
-│   ├── hooks                  # Reveal, parallax and reservation controllers
-│   ├── utils
-│   │   └── reservation.ts     # Date, seating and storage helpers
-│   ├── assets
-│   │   └── images             # Five WebP photographs
-│   ├── styles                 # Section CSS plus responsive rules
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── vite-env.d.ts
-├── old                        # Archived original HTML, CSS and JavaScript
-├── LICENSE
-└── README.md
-```
-
-## Install and run
-
-Requires Node.js 20.19+ or 22.12+.
+## Run locally
 
 ```bash
 npm install
@@ -72,23 +47,62 @@ npm run dev
 
 Open the URL printed by Vite (usually `http://localhost:5173`).
 
-### Production build
-
 ```bash
-npm run build
-npm run preview
+npm run build   # type-check + production build
+npm run lint    # ESLint
+npm run preview # preview the production build
 ```
 
-The production output is written to `dist/`.
+## Pages
 
-## Reservation form
+| Route | Page |
+| --- | --- |
+| `/` | Home — hero, dining story, featured dishes, teasers, testimonials |
+| `/menu` | Full menu with filters, search and sort |
+| `/menu/:slug` | Dish detail and add-to-reservation |
+| `/build-your-boil` | Bag Boil Builder wizard |
+| `/rooms` | Rooms & Suites |
+| `/reservations` | Table reservation + room enquiry forms |
+| `/reservations/confirmation` | Saved booking confirmation |
+| `/gallery` | Photo gallery with lightbox |
+| `/experiences` | Experiences & Events |
+| `/about` | Our story and values |
+| `/contact` | Contact details and map |
+| `*` | 404 |
 
-The form is a front-end demo. Submitting it stores a request under the `ondine.table-request.v1` key in the browser's `localStorage`; nothing is sent to a server and no table is actually booked. Requests can be edited from the confirmation panel, and the saved request is restored on the next visit.
+## Folder structure
 
-## Archived original
+```text
+src/
+├── assets/images/          Original WebP photography
+├── config/site.ts          Hotel name, contact details, currency, social links, TODOs
+├── context/                Cart and UI drawer providers
+├── data/                   dishes, rooms, events, testimonials, gallery, legacy site copy
+├── hooks/                  Theme, scroll reveal, hero parallax, legacy reservation hook
+├── types/                  Strict shared domain types
+├── utils/                  Storage, booking persistence, boil pricing, date helpers
+├── components/
+│   ├── layout/             Navbar, Footer, RootLayout, PageTransition, ScrollToTop, ReservationDrawer
+│   ├── common/             Seo, PageHero, SectionHeading, ImageWithFallback, Badge, Price, SpiceMeter, Counter
+│   ├── cards/              DishCard, RoomCard, EventCard, TestimonialCard
+│   ├── home/               HomeHero, FeaturedDishes, BuildTeaser, RoomsPreview, ChefPick, TestimonialsCarousel, GalleryStrip, HomeCta
+│   ├── menu/               MenuFilters, DishGrid
+│   ├── builder/            BoilBuilder, BagIllustration
+│   ├── gallery/            GalleryGrid, Lightbox
+│   └── forms/              ReservationForm, RoomEnquiryForm
+├── pages/                  All 12 route components (lazy-loaded)
+├── styles/                 Design system, component styles, page styles, theme, responsive
+├── App.tsx                 Router
+└── main.tsx                Providers and entry point
+```
 
-The original non-React implementation is preserved in [`old/index.html`](old/index.html), [`old/style.css`](old/style.css) and [`old/main.js`](old/main.js) for reference. The original images now live in `src/assets/images`.
+## Images and placeholders
 
-## License
+- Existing dish photos live in `public/images/seafood/*.png`.
+- New dish, room, event and gallery photos follow `/images/<group>/<slug>.jpg` paths. Missing files render a reusable gradient + fish icon fallback with the item name, so the site never shows broken images.
+- **All prices are placeholders** and display as `€—` unless they are indicative builder totals. The builder total is computed from clearly marked TODO prices in `src/utils/boilPricing.ts`.
+- Contact details, address, social URLs and map coordinates are placeholder values in `src/config/site.ts`.
 
-The repository is licensed under the [Apache License 2.0](LICENSE). The original Ondine design, copy and photography remain the property of their respective creators.
+## Notes
+
+The original one-page Ondine site and its working reservation form are preserved inside the Home route; the new reservation flow adds the react-hook-form/zod version without removing the earlier functionality. The archived static site remains under `old/`.
