@@ -52,7 +52,7 @@ export function ChefPick() {
           <h2 id="chef-pick-title">{dish.name}</h2>
           <p>{dish.description}</p>
           <div className="chef-pick__footer">
-            <Price value={dish.price} placeholder={dish.priceIsPlaceholder} />
+            <Price value={dish.price} />
             <Link className="text-link" to={`/menu/${dish.slug}`}>
               See the dish <ArrowRight size={16} aria-hidden="true" />
             </Link>
