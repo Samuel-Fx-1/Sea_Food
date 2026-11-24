@@ -462,7 +462,8 @@ export const dishes: Dish[] = [
     ],
     spiceLevel: 0,
     price: 148, // DEMO
-    image: '/images/seafood/seafood-platter.png',
+    // The old file was a PR screenshot and has been removed; render the fallback placeholder.
+    image: '',
     imageAlt:
       'Mixed seafood platter with prawns, oysters, raw fish, lobster tails, crab and mussels with lemon and parsley',
     isSignature: true,
