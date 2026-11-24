@@ -28,7 +28,7 @@ export default function ExperiencesPage() {
           id="experiences-title"
           eyebrow="What's on"
           title="Come for the occasion"
-          description="Prices shown are placeholders. Tell us what you have in mind and we will shape the day around you."
+          description="Prices shown are demo values. Tell us what you have in mind and we will shape the day around you."
         />
         <div className="event-grid">
           {events.map((event) => (
