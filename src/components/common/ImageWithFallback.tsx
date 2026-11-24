@@ -22,7 +22,8 @@ export function ImageWithFallback({
 }: ImageWithFallbackProps) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
+  // An empty src means the photo was removed; show the placeholder without a broken request.
+  if (!src || failed) {
     return (
       <div
         className={className ? `image-fallback ${className}` : 'image-fallback'}
