@@ -1,0 +1,112 @@
+[data-theme='light'] body {
+  background: var(--ink);
+  color: var(--text);
+}
+
+[data-theme='light'] body::after {
+  opacity: 0.03;
+}
+
+[data-theme='light'] ::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+[data-theme='light'] .intro,
+[data-theme='light'] .story-section,
+[data-theme='light'] .menu-section,
+[data-theme='light'] .reservation-section {
+  background: var(--surface);
+}
+
+[data-theme='light'] .visit-section {
+  background: var(--surface-raised);
+}
+
+[data-theme='light'] .interlude {
+  background: var(--surface-sunken);
+}
+
+[data-theme='light'] .intro-kicker,
+[data-theme='light'] .intro-bottom,
+[data-theme='light'] .story-photo > span,
+[data-theme='light'] .visit-details h3,
+[data-theme='light'] .category-number,
+[data-theme='light'] .category-note,
+[data-theme='light'] .menu-visual-caption,
+[data-theme='light'] .reservation-form-index,
+[data-theme='light'] .form-top span {
+  color: var(--gold);
+}
+
+[data-theme='light'] .intro-copy p,
+[data-theme='light'] .story-content > p:not(.overline),
+[data-theme='light'] .story-signature,
+[data-theme='light'] .visit-lede,
+[data-theme='light'] .visit-details p,
+[data-theme='light'] .hours,
+[data-theme='light'] .reservation-intro > p,
+[data-theme='light'] .reservation-disclaimer,
+[data-theme='light'] .menu-heading > p,
+[data-theme='light'] .dish p,
+[data-theme='light'] .footer-bottom,
+[data-theme='light'] .footer-top p {
+  color: var(--text-soft);
+}
+
+[data-theme='light'] .story-content blockquote {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+[data-theme='light'] .site-nav:not(.site-nav--solid) {
+  color: #fff6e9;
+}
+
+[data-theme='light'] .site-nav--solid {
+  color: var(--text);
+}
+
+[data-theme='light'] .page-hero__content {
+  color: #fff6e9;
+}
+
+[data-theme='light'] .hero,
+[data-theme='light'] .interlude {
+  color: #f4ede1;
+}
+
+[data-theme='light'] .dish-line .dots {
+  border-bottom-color: var(--line-strong);
+}
+
+[data-theme='light'] .price {
+  color: var(--text);
+}
+
+[data-theme='light'] .price--placeholder {
+  color: var(--accent);
+}
+
+[data-theme='light'] .reservation-panel {
+  background: var(--surface-raised);
+  border-color: var(--line-strong);
+}
+
+[data-theme='light'] .reservation-panel input,
+[data-theme='light'] .reservation-panel select,
+[data-theme='light'] .reservation-panel textarea {
+  background: var(--surface);
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+[data-theme='light'] .reservation-panel button[type='submit'] {
+  background: var(--accent);
+  color: #fff;
+}
+
+[data-theme='light'] .success-panel {
+  background: var(--surface-raised);
+  border-color: var(--line);
+}
