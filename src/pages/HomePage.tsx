@@ -1,30 +1,42 @@
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Footer } from '../components/Footer';
-import { Hero } from '../components/Hero';
-import { Interlude } from '../components/Interlude';
+import heroImage from '../assets/images/image-1.webp';
+import { Seo } from '../components/common/Seo';
+import { HomeHero } from '../components/home/HomeHero';
+import { FeaturedDishes } from '../components/home/FeaturedDishes';
+import { BuildTeaser } from '../components/home/BuildTeaser';
+import { RoomsPreview } from '../components/home/RoomsPreview';
+import { ChefPick } from '../components/home/ChefPick';
+import { TestimonialsCarousel } from '../components/home/TestimonialsCarousel';
+import { GalleryStrip } from '../components/home/GalleryStrip';
+import { HomeCta } from '../components/home/HomeCta';
 import { Intro } from '../components/Intro';
 import { MenuSection } from '../components/MenuSection';
-import { Navbar } from '../components/Navbar';
-import { Reservations } from '../components/Reservations';
+import { Interlude } from '../components/Interlude';
 import { Story } from '../components/Story';
 import { Visit } from '../components/Visit';
+import { Reservations } from '../components/Reservations';
 
-export function HomePage() {
-  useScrollReveal();
-
+export default function HomePage() {
   return (
     <>
-      <Navbar />
-      <main id="main">
-        <Hero />
-        <Intro />
-        <MenuSection />
-        <Interlude />
-        <Story />
-        <Visit />
-        <Reservations />
-      </main>
-      <Footer />
+      <Seo
+        title="Home"
+        description="Sea_Food Hotel & Resort — seaside rooms, Atlantic seafood and slow days by the water."
+        image={heroImage}
+      />
+      <HomeHero />
+      <Intro />
+      <MenuSection />
+      <FeaturedDishes />
+      <BuildTeaser />
+      <RoomsPreview />
+      <ChefPick />
+      <TestimonialsCarousel />
+      <GalleryStrip />
+      <Interlude />
+      <Story />
+      <Visit />
+      <HomeCta />
+      <Reservations />
     </>
   );
 }
