@@ -53,7 +53,7 @@ export default function MenuPage() {
       <PageHero
         eyebrow="The menu"
         title="From our waters, with intention."
-        description="Twenty-nine ways to enjoy the Atlantic. Filter by category, search an ingredient, or build a bag boil from scratch."
+        description="Forty-five ways to enjoy the Atlantic. Filter by category, search an ingredient, or build a bag boil from scratch."
         image={heroImage}
       />
 

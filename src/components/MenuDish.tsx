@@ -1,8 +1,9 @@
+import type { Dish } from '../types';
 import { formatPrice } from '../config/site';
-import type { LegacyDish } from '../types';
+import { ImageWithFallback } from './common/ImageWithFallback';
 
 interface MenuDishProps {
-  dish: LegacyDish;
+  dish: Dish;
 }
 
 export function MenuDish({ dish }: MenuDishProps) {
@@ -10,11 +11,12 @@ export function MenuDish({ dish }: MenuDishProps) {
     <div className={dish.image ? 'dish dish--card' : 'dish'}>
       {dish.image ? (
         <div className="dish-media">
-          <img
+          <ImageWithFallback
             src={dish.image}
-            alt={dish.imageAlt ?? dish.name}
-            loading="lazy"
-            decoding="async"
+            alt={dish.imageAlt}
+            label={dish.name}
+            width={900}
+            height={600}
           />
         </div>
       ) : null}
@@ -27,7 +29,7 @@ export function MenuDish({ dish }: MenuDishProps) {
         <span className="price">{formatPrice(dish.price)}</span>
       </div>
       <p>{dish.description}</p>
-      {dish.ingredients?.length ? (
+      {dish.ingredients.length ? (
         <p className="dish-ingredients">{dish.ingredients.join(' · ')}</p>
       ) : null}
     </div>

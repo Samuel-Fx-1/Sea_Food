@@ -5,6 +5,7 @@ import { visitContent } from '../data/site';
 import { PageHero } from '../components/common/PageHero';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { Seo } from '../components/common/Seo';
+import { ContactForm } from '../components/forms/ContactForm';
 
 export default function ContactPage() {
   return (
@@ -70,6 +71,11 @@ export default function ContactPage() {
               {siteConfig.coordinates.latitude}, {siteConfig.coordinates.longitude}).
             </p>
           </div>
+        </div>
+
+        <div className="contact-page__form">
+          <SectionHeading id="contact-form-title" eyebrow="Get in touch" title="Send us a message" />
+          <ContactForm />
         </div>
       </section>
     </>

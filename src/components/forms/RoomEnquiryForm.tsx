@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { BedDouble } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { z } from 'zod';
 import { rooms } from '../../data/rooms';
+import { sendEmail } from '../../utils/sendEmail';
 import {
   createReference,
   readRoomEnquiries,
@@ -47,6 +49,7 @@ export function RoomEnquiryForm() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const requestedRoom = searchParams.get('room') ?? '';
+  const [submitError, setSubmitError] = useState('');
 
   const {
     register,
@@ -66,8 +69,30 @@ export function RoomEnquiryForm() {
     },
   });
 
-  const onSubmit = (values: FormValues): void => {
+  const onSubmit = async (values: FormValues): Promise<void> => {
+    setSubmitError('');
     const reference = createReference('RM');
+    const roomName = rooms.find((room) => room.slug === values.roomSlug)?.name ?? values.roomSlug;
+
+    try {
+      await sendEmail(import.meta.env.VITE_FORMSPREE_ROOM_ENQUIRY_ENDPOINT, {
+        _subject: `Room enquiry ${reference} — ${values.name}`,
+        _replyto: values.email,
+        Reference: reference,
+        Name: values.name,
+        Email: values.email,
+        Phone: values.phone,
+        Room: roomName,
+        Guests: values.guests,
+        'Check-in': values.checkIn,
+        'Check-out': values.checkOut,
+        Message: values.message || 'None',
+      });
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Could not send your enquiry.');
+      return;
+    }
+
     writeRoomEnquiries([
       ...readRoomEnquiries(),
       {
@@ -143,10 +168,9 @@ export function RoomEnquiryForm() {
       <button className="button button--gold button--block" type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Sending…' : 'Send room enquiry'}
       </button>
-      {/* DEMO: enquiries stay in localStorage; no email is sent in this demo. */}
+      {submitError ? <p className="form-error" role="alert">{submitError}</p> : null}
       <p className="booking-form__disclaimer">
-        Room rates are demo values. We will be in touch with real availability and pricing.
-        {' '}No confirmation email is sent in this demo.
+        Room rates are demo values. We email your enquiry when delivery is configured and keep a copy on this device.
       </p>
     </form>
   );

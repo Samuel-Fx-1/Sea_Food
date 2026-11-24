@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CalendarDays, ShoppingBag, Users } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { formatPrice } from '../../config/site';
 import { useCart } from '../../context/CartContext';
 import { getAvailableTimes, getDateBounds } from '../../utils/reservation';
+import { sendEmail } from '../../utils/sendEmail';
 import {
   createReference,
   readTableBookings,
@@ -61,6 +62,7 @@ export function ReservationForm() {
   const navigate = useNavigate();
   const { items, total, clearCart } = useCart();
   const bounds = useMemo(() => getDateBounds(), []);
+  const [submitError, setSubmitError] = useState('');
 
   const {
     register,
@@ -83,8 +85,36 @@ export function ReservationForm() {
   const selectedDate = watch('date');
   const availableTimes = selectedDate ? getAvailableTimes(selectedDate) : [];
 
-  const onSubmit = (values: FormValues): void => {
+  const onSubmit = async (values: FormValues): Promise<void> => {
+    setSubmitError('');
     const reference = createReference('TBL');
+
+    try {
+      await sendEmail(import.meta.env.VITE_FORMSPREE_RESERVATION_ENDPOINT, {
+        _subject: `Table request ${reference} — ${values.name}`,
+        _replyto: values.email,
+        Reference: reference,
+        Name: values.name,
+        Email: values.email,
+        Phone: values.phone,
+        Date: values.date,
+        Time: values.time,
+        Guests: values.guests,
+        Requests: values.specialRequests || 'None',
+        Order:
+          items
+            .map(
+              (item) =>
+                `${item.name} x${item.quantity} — ${formatPrice(item.unitPrice * item.quantity)}`,
+            )
+            .join('\n') || 'No dishes selected',
+        Total: formatPrice(total),
+      });
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Could not send your request.');
+      return;
+    }
+
     writeTableBookings([
       ...readTableBookings(),
       {
@@ -182,10 +212,9 @@ export function ReservationForm() {
       <button className="button button--gold button--block" type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Sending…' : 'Request this table'}
       </button>
-      {/* DEMO: requests stay in localStorage; no email is sent in this demo. */}
+      {submitError ? <p className="form-error" role="alert">{submitError}</p> : null}
       <p className="booking-form__disclaimer">
-        We keep your request on this device and show it in “My Reservation”. No confirmation email is sent
-        {' '}in this demo.
+        We email your request when delivery is configured and also keep it on this device in “My Reservation”.
       </p>
     </form>
   );
