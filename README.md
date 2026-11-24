@@ -1,62 +1,93 @@
 # Ondine — Seafood Bistro
 
-A fully static reproduction of the **Ondine** seafood bistro website — an Atlantic-led restaurant in Lisbon's Chiado. Built with plain HTML, CSS and vanilla JavaScript, with no frameworks and no build step.
+A faithful rebuild of the **Ondine** seafood bistro website — an Atlantic-led restaurant in Lisbon's Chiado — using **React and TypeScript**. The layout, copy, seasonal menu, photography and visual design are preserved from the original static site.
 
-> Original design and content: [ondine-bistr-qi9tep8y.manus.space](https://ondine-bistr-qi9tep8y.manus.space/). This repository is a static reproduction for learning and portfolio purposes.
+> Original design and content: [ondine-bistr-qi9tep8y.manus.space](https://ondine-bistr-qi9tep8y.manus.space/). This repository is a reproduction for learning and portfolio purposes.
 
 ## Preview
 
-![Ondine hero](images/image-1.webp)
+![Ondine hero](src/assets/images/image-1.webp)
 
 ## What's included
 
-- **Complete one-page site** — hero, seasonal menu, interlude, chef's story, visit details, reservations and footer.
-- **Responsive layout** — designed for desktop, tablet and mobile (down to 320 px), including an animated mobile navigation menu.
-- **Motion** — scroll-triggered reveals, subtle hero parallax, and hover transitions. Respects `prefers-reduced-motion`.
-- **Working reservation form** — validates the date (Tuesday–Sunday, up to 90 days ahead), generates available seating times, checks party size and email, and saves the request in `localStorage`.
-- **Self-contained assets** — all photography and the favicon are stored locally; only the Google Fonts stylesheet is loaded from a CDN.
-- **Accessibility touches** — skip link, landmarks, labelled form controls, visible focus states and ARIA state on the menu toggle.
+- **One-page restaurant site** — hero, introduction, seasonal menu, full-bleed interlude, chef's story, visit details, reservations and a large footer.
+- **Responsive, mobile-first layout** — down to 320 px, with an animated mobile navigation menu.
+- **Motion** — scroll-triggered reveals, subtle hero parallax and hover transitions. All motion respects `prefers-reduced-motion`.
+- **Working reservation form** — validates dates (Tuesday–Sunday, up to 90 days ahead), generates available seating times for the selected day, validates party size, name and email, and stores the request in `localStorage`. Saved requests are restored on the next visit and can be edited.
+- **Typed content** — all menu and page copy lives in `src/data` behind shared interfaces in `src/types`; components render data and contain no hardcoded menu content.
+- **Accessibility** — skip link, landmarks, labelled form controls, visible focus states and ARIA state on the mobile menu toggle.
+- **Self-contained assets** — photography and the favicon are stored locally; only Google Fonts is loaded from a CDN.
+
+## Tech stack
+
+- **React 19** with **TypeScript** in strict mode
+- **Vite 8** for development and production builds
+- **React hooks** for navigation state, form state, scroll reveals and hero parallax
+- **Plain CSS** — Grid, Flexbox, `clamp()` and custom properties, split by section
+- **Google Fonts** — Cormorant Garamond and DM Sans
+- **localStorage** for the demo reservation flow (no backend)
+
+The site is a single page with anchor navigation, so React Router is intentionally not used.
 
 ## Project structure
 
 ```text
 .
-├── index.html          # Markup for the whole site
-├── assets
-│   ├── style.css       # Layout, typography and responsive rules
-│   └── main.js         # Navigation, reveals, parallax and reservation logic
-├── images              # Five WebP photographs
-├── favicon.svg
+├── index.html                 # Vite HTML entry and document metadata
+├── vite.config.ts             # Vite + React configuration
+├── tsconfig*.json             # Strict TypeScript project configs
+├── public
+│   └── favicon.svg
+├── src
+│   ├── components             # Navbar, Hero, MenuSection, Reservations, Footer, etc.
+│   ├── pages
+│   │   └── HomePage.tsx       # Composes the one-page site
+│   ├── data
+│   │   ├── menu.ts            # Typed seasonal menu
+│   │   └── site.ts            # Typed page copy, navigation and form content
+│   ├── types
+│   │   └── index.ts           # Shared interfaces
+│   ├── hooks                  # Reveal, parallax and reservation controllers
+│   ├── utils
+│   │   └── reservation.ts     # Date, seating and storage helpers
+│   ├── assets
+│   │   └── images             # Five WebP photographs
+│   ├── styles                 # Section CSS plus responsive rules
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── old                        # Archived original HTML, CSS and JavaScript
 ├── LICENSE
 └── README.md
 ```
 
-## Run locally
+## Install and run
 
-The page uses an ES module, so serve it over HTTP rather than opening `index.html` directly.
-
-```bash
-npx --yes serve .
-```
-
-Then open the URL printed in the terminal (usually `http://localhost:3000`).
-
-Any static server works, for example:
+Requires Node.js 20.19+ or 22.12+.
 
 ```bash
-npx --yes http-server -p 4173
+npm install
+npm run dev
 ```
+
+Open the URL printed by Vite (usually `http://localhost:5173`).
+
+### Production build
+
+```bash
+npm run build
+npm run preview
+```
+
+The production output is written to `dist/`.
 
 ## Reservation form
 
 The form is a front-end demo. Submitting it stores a request under the `ondine.table-request.v1` key in the browser's `localStorage`; nothing is sent to a server and no table is actually booked. Requests can be edited from the confirmation panel, and the saved request is restored on the next visit.
 
-## Tech
+## Archived original
 
-- Semantic HTML5
-- Modern CSS (Grid, Flexbox, `clamp()`, custom properties)
-- Vanilla JavaScript (IntersectionObserver, localStorage, native form validation)
-- Google Fonts: Cormorant Garamond + DM Sans
+The original non-React implementation is preserved in [`old/index.html`](old/index.html), [`old/style.css`](old/style.css) and [`old/main.js`](old/main.js) for reference. The original images now live in `src/assets/images`.
 
 ## License
 
