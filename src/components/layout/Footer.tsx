@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { AtSign, Camera, MessageCircle, Send } from 'lucide-react';
+import { Camera, MessageCircle, Music2, Send } from 'lucide-react';
 import { navigation, siteConfig } from '../../config/site';
 
 const socialIcons = {
   instagram: Camera,
   facebook: MessageCircle,
-  twitter: AtSign,
+  tiktok: Music2,
 };
 
 export function Footer() {
