@@ -2,14 +2,13 @@ import { formatPrice } from '../../config/site';
 
 interface PriceProps {
   value: number;
-  placeholder?: boolean;
   className?: string;
 }
 
-export function Price({ value, placeholder, className }: PriceProps) {
+export function Price({ value, className }: PriceProps) {
   return (
     <span className={className ? `price-value ${className}` : 'price-value'}>
-      {formatPrice(value, placeholder)}
+      {formatPrice(value)}
     </span>
   );
 }
