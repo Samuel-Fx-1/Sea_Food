@@ -1,0 +1,39 @@
+import type { Dish } from '../types';
+
+interface MenuDishProps {
+  dish: Dish;
+}
+
+export function MenuDish({ dish }: MenuDishProps) {
+  return (
+    <div className={dish.image ? 'dish dish--card' : 'dish'}>
+      {dish.image ? (
+        <div className="dish-media">
+          <img
+            src={dish.image}
+            alt={dish.imageAlt ?? dish.name}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ) : null}
+      <div className="dish-line">
+        <h4>
+          {dish.name}
+          {dish.note ? <> <small>{dish.note}</small></> : null}
+        </h4>
+        <span className="dots" />
+        <span
+          className={dish.priceIsPlaceholder ? 'price price--placeholder' : 'price'}
+          title={dish.priceIsPlaceholder ? 'Price to be confirmed' : undefined}
+        >
+          {dish.priceIsPlaceholder ? '€—' : `€${dish.price}`}
+        </span>
+      </div>
+      <p>{dish.description}</p>
+      {dish.ingredients?.length ? (
+        <p className="dish-ingredients">{dish.ingredients.join(' · ')}</p>
+      ) : null}
+    </div>
+  );
+}

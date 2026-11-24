@@ -1,0 +1,106 @@
+.visit-section {
+  padding-top: 65px;
+  padding-bottom: 145px;
+  background: #0d1f24;
+}
+
+.visit-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(60px, 8vw, 145px);
+  align-items: center;
+  margin-top: 83px;
+}
+
+.visit-content h2 {
+  margin: 0 0 28px;
+}
+
+.visit-lede {
+  max-width: 430px;
+}
+
+.visit-details {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 30px;
+  border-top: 1px solid var(--line);
+  margin-top: 53px;
+  padding-top: 25px;
+}
+
+.visit-details h3 {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 0 0 20px;
+}
+
+.visit-details p {
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0 0 18px;
+}
+
+.visit-details .text-link {
+  font-size: 9px;
+  gap: 10px;
+}
+
+.hours {
+  margin: 0;
+}
+
+.hours div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 11px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #e2ded3;
+}
+
+.hours dt,
+.hours dd {
+  margin: 0;
+}
+
+.hours dd {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.walkins {
+  margin-top: 40px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-style: italic;
+  color: #cbb58f;
+}
+
+.visit-photo {
+  position: relative;
+  align-self: stretch;
+  min-height: 570px;
+  background: #162e31;
+}
+
+.visit-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.82);
+}
+
+.visit-photo > span {
+  position: absolute;
+  bottom: 20px;
+  left: 22px;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: #f2e9db;
+  text-shadow: 0 2px 8px #000;
+}

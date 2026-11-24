@@ -7,6 +7,8 @@ desktop.ini
 # Logs
 *.log
 
-# Dependencies / build output (not used, kept for safety)
+# Dependencies / build output
 node_modules/
 dist/
+dist-ssr/
+*.local
