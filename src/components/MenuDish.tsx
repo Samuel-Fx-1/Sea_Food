@@ -1,7 +1,7 @@
-import type { Dish } from '../types';
+import type { LegacyDish } from '../types';
 
 interface MenuDishProps {
-  dish: Dish;
+  dish: LegacyDish;
 }
 
 export function MenuDish({ dish }: MenuDishProps) {
