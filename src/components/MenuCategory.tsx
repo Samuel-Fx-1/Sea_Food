@@ -6,8 +6,12 @@ interface MenuCategoryProps {
 }
 
 export function MenuCategory({ category }: MenuCategoryProps) {
+  const hasCards = category.dishes.some((dish) => dish.image);
+
   return (
-    <div className="menu-category reveal">
+    <div
+      className={hasCards ? 'menu-category menu-category--cards reveal' : 'menu-category reveal'}
+    >
       <div className="category-header">
         <span className="category-number">{category.numeral}</span>
         <h3>{category.title}</h3>
@@ -15,7 +19,7 @@ export function MenuCategory({ category }: MenuCategoryProps) {
       </div>
       <div className="menu-items">
         {category.dishes.map((dish) => (
-          <MenuDish key={dish.name} dish={dish} />
+          <MenuDish key={dish.id ?? dish.name} dish={dish} />
         ))}
       </div>
     </div>
