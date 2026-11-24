@@ -8,18 +8,16 @@ interface MenuDishProps {
 
 export function MenuDish({ dish }: MenuDishProps) {
   return (
-    <div className={dish.image ? 'dish dish--card' : 'dish'}>
-      {dish.image ? (
-        <div className="dish-media">
-          <ImageWithFallback
-            src={dish.image}
-            alt={dish.imageAlt}
-            label={dish.name}
-            width={900}
-            height={600}
-          />
-        </div>
-      ) : null}
+    <div className="dish dish--card">
+      <div className="dish-media">
+        <ImageWithFallback
+          src={dish.image}
+          alt={dish.imageAlt}
+          label={dish.name}
+          width={900}
+          height={600}
+        />
+      </div>
       <div className="dish-line">
         <h4>
           {dish.name}
