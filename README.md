@@ -1,10 +1,10 @@
 # Sea_Food Hotel & Resort
 
+> **Live site:** https://sea-food.samuelislegend8.workers.dev
+
 A multi-page seaside hotel and booking platform built with **React + TypeScript + Vite**. It brings together Atlantic seafood, a build-your-own bag boil wizard, rooms and suites, experiences, a gallery with lightbox, and a local reservation flow — all in one ocean-blue, sand and coral design system.
 
 > **Demo launch:** the hotel name, tagline, contact details, prices and map coordinates are realistic demo values for the competition entry, marked with `// DEMO` comments. The 60 dish, room, event and gallery photos are local JPEGs credited in [`public/images/CREDITS.md`](public/images/CREDITS.md); gradient fallbacks still cover any missing or failed image.
->
-> **Live demo:** https://example.com/sea-food (placeholder — replace with the Cloudflare deployment URL).
 
 ## Screenshots
 
