@@ -31,6 +31,7 @@ export default function App() {
           <Route path="reservations/confirmation" element={<ConfirmationPage />} />
           <Route path="gallery" element={<GalleryPage />} />
           <Route path="experiences" element={<ExperiencesPage />} />
+          <Route path="events" element={<ExperiencesPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="privacy" element={<PrivacyPage />} />
