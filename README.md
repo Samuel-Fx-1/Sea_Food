@@ -1,6 +1,6 @@
 # Sea_Food Hotel & Resort
 
-> **Live site:** https://sea-food.samuelislegend8.workers.dev
+> **Deployment:** Vercel — connect this repository in Vercel to publish, then add your production URL here.
 
 A multi-page seaside hotel and booking platform built with **React + TypeScript + Vite**. It brings together Atlantic seafood, a build-your-own bag boil wizard, rooms and suites, experiences, a gallery with lightbox, and a local reservation flow — all in one ocean-blue, sand and coral design system.
 
@@ -47,7 +47,7 @@ Captured from the production preview build:
 | Styling | Plain CSS design system with CSS variables (two fonts: Cormorant Garamond + DM Sans) |
 | Linting | ESLint 10 flat config with typescript-eslint |
 | Node | 22.12.0 pinned in `.nvmrc` and `engines` (Vite 8 requires ≥20.19 / ≥22.12) |
-| Deploy | Cloudflare Workers Builds / Pages static output |
+| Deploy | Vercel (static Vite build with SPA rewrites) |
 
 ## Run locally
 
@@ -71,28 +71,33 @@ Copy `.env.example` to `.env` (gitignored — never commit it). These are all th
 
 | Variable | Needed for | Where to set it |
 | --- | --- | --- |
-| `VITE_FORMSPREE_ENDPOINT` | Email delivery for the table reservation, room enquiry and contact forms | `.env` locally; Cloudflare dashboard for builds |
+| `VITE_FORMSPREE_ENDPOINT` | Email delivery for the table reservation, room enquiry and contact forms | `.env` locally; Vercel project settings for builds |
+| `VITE_SITE_URL` | Optional canonical domain for metadata, `robots.txt` and `sitemap.xml` | Vercel project settings; auto-detected from `VERCEL_URL` / `VERCEL_PROJECT_PRODUCTION_URL` when unset |
 | `PIXABAY_API_KEY` | Local-only `npm run fetch-images` tool — never bundled and not needed in production | local `.env` only |
 
 The three forms share one [Formspree](https://formspree.io) endpoint, e.g. `VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id`. With no endpoint configured, submissions are still saved locally, the forms explain this in development, and no email is sent. Restart the dev server after changing `.env`.
 
-## Deployment (Cloudflare Workers Builds: sea-food)
+## Deployment (Vercel)
+
+Import the GitHub repository in Vercel. Vercel reads `vercel.json`, so no dashboard build overrides are needed.
 
 | Setting | Value |
 | --- | --- |
+| Framework preset | Vite (`vercel.json` sets `framework: "vite"`) |
 | Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
 | Output directory | `dist` |
 | Node version | 22.12.0 (pinned in `.nvmrc` and `engines`) |
-| SPA fallback | `wrangler.jsonc` assets: `directory: "./dist"` and `not_found_handling: "single-page-application"` |
-| Build-time variable | `VITE_FORMSPREE_ENDPOINT` |
+| SPA fallback | `vercel.json` rewrites every path to `/index.html` |
+| Build-time variables | `VITE_FORMSPREE_ENDPOINT`; optionally `VITE_SITE_URL` |
 
-Direct links such as `/menu`, `/rooms` and `/privacy` are served by `index.html` through Wrangler's SPA fallback. Build and deploy with:
+Direct links such as `/menu`, `/rooms` and `/privacy` are served by `index.html` through the Vercel rewrite. To reproduce a Vercel build locally:
 
 ```bash
-npm run build
-npx wrangler deploy
+VITE_SITE_URL=https://your-domain.com npm run build
+npm run preview
 ```
+
+`vite.config.ts` injects the site URL into `index.html` metadata and generates `dist/robots.txt` and `dist/sitemap.xml` at build time. On Vercel it uses `VERCEL_PROJECT_PRODUCTION_URL` for production and `VERCEL_URL` for previews unless `VITE_SITE_URL` is set.
 
 ## Pages
 
@@ -106,7 +111,7 @@ npx wrangler deploy
 | `/reservations` | Table reservation + room enquiry forms |
 | `/reservations/confirmation` | Saved booking confirmation |
 | `/gallery` | Photo gallery with lightbox |
-| `/experiences` | Experiences & Events |
+| `/experiences`, `/events` | Experiences & Events |
 | `/about` | Our story and values |
 | `/contact` | Contact details, map and message form |
 | `/privacy` | Privacy policy |
@@ -117,7 +122,8 @@ npx wrangler deploy
 
 ```text
 .nvmrc                      Pinned Node version (22.12.0)
-wrangler.jsonc              Worker name and assets SPA fallback
+vercel.json                 Vercel build settings and SPA rewrites
+vite.config.ts              Site URL injection, robots.txt and sitemap.xml generation
 public/
 ├── images/                 Local dish, room, event and gallery photos + CREDITS.md
 └── favicon.svg
