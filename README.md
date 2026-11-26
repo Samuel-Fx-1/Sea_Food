@@ -1,6 +1,6 @@
 # Sea_Food Hotel & Resort
 
-> **Deployment:** Vercel — connect this repository in Vercel to publish, then add your production URL here.
+> **Live site:** https://sea-food-blond.vercel.app
 
 A multi-page seaside hotel and booking platform built with **React + TypeScript + Vite**. It brings together Atlantic seafood, a build-your-own bag boil wizard, rooms and suites, experiences, a gallery with lightbox, and a local reservation flow — all in one ocean-blue, sand and coral design system.
 
