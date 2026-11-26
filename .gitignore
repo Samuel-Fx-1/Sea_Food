@@ -11,7 +11,7 @@ desktop.ini
 node_modules/
 dist/
 dist-ssr/
-.wrangler/
+.vercel/
 *.local
 
 # Environment / secrets (never commit API keys)
